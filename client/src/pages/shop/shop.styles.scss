@@ -1,0 +1,44 @@
+.shop-container{
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'Cinzel Decorative', cursive;
+    .shop-header{
+        margin: 100px auto;
+    }
+
+    .category-list{
+        display: block;
+        float: left;
+        text-align: left;
+        width: 25%;
+        height: 100%;
+        padding: 0px 10px;
+        box-sizing: border-box;
+        position: sticky;
+        top: 100px;
+        #category{
+            font-family: 'Raleway', sans-serif;
+        }
+    }
+
+    .shop-items{
+        display: block;
+        float: left;
+        width: 75%;
+        box-sizing: border-box;
+        .shop-items-container{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 768px) {
+            .shop-items-container{
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+    }
+}
+

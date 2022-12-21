@@ -1,0 +1,14 @@
+.button-container{
+    width: 100%;
+    border: 1px solid black;
+    height: 50px;
+    transition: 0.3s all ease;
+    margin: 20px 0px;
+    background-color: transparent;
+    &:hover{
+        background-color: black;
+        color: white
+    }
+}
+
+//set styles for primary and secondary

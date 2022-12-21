@@ -1,0 +1,11 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: 'Cinzel Decorative', cursive;
+$secondary-font: 'Raleway', sans-serif;
+
+.login-form-container{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    font-family: $primary-font;
+}

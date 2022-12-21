@@ -1,0 +1,84 @@
+
+.navigation{
+    display: flex;
+    position: fixed;
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    padding: 0px 50px;
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+
+  
+    .logo{
+        display: flex;
+        flex:1; 
+        justify-content: flex-start;
+    }
+    .navigation-bar{
+        flex: 2;
+    }
+    .action-buttons{
+        display: flex;
+        flex:1; 
+        justify-content: flex-end;
+        align-items: center;
+        gap:25px;
+
+        p{
+            padding:0px ;
+            margin:0;
+        }
+    }
+    
+    ul{
+        padding: 10px;
+        margin: 10px;
+        list-style-type: none;
+    }
+
+    li{
+        display: inline;
+        margin: 0px 25px;
+    }
+a{
+    position: relative;
+    text-decoration: none;
+    color: black;
+    padding: 10px 0px;
+}
+a::after{
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    height: 1px;
+    width: 0%;
+    background-color: black;
+    transition: all 0.5s ease;
+}
+
+a:hover::after{
+    width: 100%;
+}
+
+.active{
+    font-weight: 600;
+}
+.active::after{
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: black;
+}
+
+}
+
