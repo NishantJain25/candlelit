@@ -1,9 +1,10 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useEffect, useState, useContext } from "react"
 import {
 	onAuthStateChangeListener,
 	createUserDocFromAuth,
 	getUser,
 } from "../utils/firebase/firebase.utils"
+import { CartContext } from "./cart.context"
 
 export const UserContext = createContext({
 	currentUser: null,
@@ -16,14 +17,8 @@ export const UserProvider = ({ children }) => {
 	const value = { currentUser, setCurrentUser }
 
 	useEffect(() => {
-		const unsubscribe = onAuthStateChangeListener(async (user) => {
-			if (user) {
-				//createUserDocFromAuth(user)
-				const data = await getUser(user.uid)
-				setCurrentUser(data)
-			} else {
-				setCurrentUser(user)
-			}
+		const unsubscribe = onAuthStateChangeListener((user) => {
+			setCurrentUser(user)
 		})
 		return unsubscribe
 	}, [])

@@ -1,0 +1,102 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
+.cart-container {
+	margin: 50px auto;
+	width: 75vw;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	gap: 50px;
+
+	h1 {
+		font-family: $primary-font;
+	}
+	.cart-table-container {
+		position: relative;
+		display: flex;
+		flex-grow: 1;
+		gap: 100px;
+		.cart-table {
+			flex: 3;
+			width: 100%;
+			text-align: left;
+
+			.table-header {
+				display: grid;
+				grid-template-columns: 60% 10% 15% 10% 5%;
+				gap: 10px;
+				color: $secondary-color;
+				font-family: $secondary-font;
+				font-size: 15px;
+			}
+			#cart-item-link {
+				text-decoration: none;
+				color: black;
+			}
+		}
+		.order-summary {
+			flex: 2;
+			width: 100%;
+			padding: 30px;
+			box-sizing: border-box;
+			display: block;
+			float: left;
+			position: sticky;
+			top: 0;
+			background-color: white;
+			font-family: $secondary-font;
+			p#title {
+				text-align: center;
+				font-size: 1.5rem;
+				margin-bottom: 50px;
+			}
+			.checkout-buttons {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 20px;
+				margin-bottom: 20px;
+				a {
+					display: flex;
+					flex: 1;
+					border: 1px solid black;
+					text-decoration: none;
+					color: black;
+					height: 50px;
+					padding: 0;
+					align-items: center;
+					justify-content: center;
+					transition: 0.3s all ease;
+
+					&:hover {
+						color: white;
+						background-color: black;
+					}
+				}
+				a#primary {
+					background-color: black;
+					color: white;
+
+					&:hover {
+						color: black;
+						background-color: transparent;
+					}
+				}
+			}
+			.info {
+				text-align: left;
+				font-size: 0.8rem;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.cart-table-container {
+		flex-direction: column;
+	}
+}

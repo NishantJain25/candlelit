@@ -1,0 +1,22 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
+.details {
+	header p {
+		font-size: 20px;
+		font-weight: 700;
+		font-family: $secondary-font;
+	}
+	.previous-orders {
+		padding: 20px 0px;
+
+		.current-orders,
+		.completed-orders {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			font-size: 12px;
+		}
+	}
+}

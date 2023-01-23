@@ -1,13 +1,17 @@
 import "./signup-form.styles.scss"
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import {
 	createAuthUserWithEmailAndPassword,
 	createUserDocFromAuth,
 } from "../../utils/firebase/firebase.utils"
 import FormInput from "../../components/form-input/form-input.component"
 import Button from "../../components/button/button.component"
+import { CartContext } from "../../contexts/cart.context"
 
 const SignUp = () => {
+	const { cartItems, cartCount, cartAmount } = useContext(CartContext)
+	const navigate = useNavigate()
 	const defaultFormFields = {
 		displayName: "",
 		email: "",
@@ -42,66 +46,55 @@ const SignUp = () => {
 		setFormFields(defaultFormFields)
 		setFormErrors(defaultFormErrors)
 	}
+
+	const showError = (errorVariable, errorMessage) => {
+		setFormErrors({ ...formErrors, [errorVariable]: errorMessage })
+		setTimeout(
+			() => setFormErrors({ ...formErrors, [errorVariable]: "" }),
+			3000
+		)
+	}
 	const onSubmit = async (event) => {
 		event.preventDefault()
 
 		if (displayName.length === 0) {
-			setFormErrors({ ...formErrors, displayNameError: "Required Field." })
-			setTimeout(
-				() => setFormErrors({ ...formErrors, displayNameError: "" }),
-				3000
-			)
+			showError("displayNameError", "Required Field.")
 			return
 		}
 		if (email.length === 0) {
-			setFormErrors({ ...formErrors, emailError: "Required Field." })
-			setTimeout(() => setFormErrors({ ...formErrors, emailError: "" }), 2000)
+			showError("emailError", "Required Field.")
 			return
 		}
 		if (password.length === 0) {
-			setFormErrors({ ...formErrors, passwordError: "Required Field." })
-			setTimeout(
-				() => setFormErrors({ ...formErrors, passwordError: "" }),
-				3000
-			)
+			showError("passwordError", "Required Field.")
 			return
 		}
 		if (password.length < 8) {
-			setFormErrors({
-				...formErrors,
-				passwordError: "Password should be atleast 8 characters long.",
-			})
-			setTimeout(
-				() => setFormErrors({ ...formErrors, passwordError: "" }),
-				3000
+			showError(
+				"passwordError",
+				"Password should be atleast 8 characters long."
 			)
 			return
 		}
-		if (confirmPassword.length === 0) {
-			setFormErrors({ ...formErrors, confirmPasswordError: "Required Field." })
-			setTimeout(
-				() => setFormErrors({ ...formErrors, confirmPasswordError: "" }),
-				3000
-			)
-			return
-		}
+
 		if (confirmPassword !== password) {
-			setFormErrors({
-				...formErrors,
-				confirmPasswordError:
-					"Passwords do not match. Please check your password",
-			})
-			setTimeout(
-				() => setFormErrors({ ...formErrors, confirmPasswordError: "" }),
-				3000
+			showError(
+				"confirmPasswordError",
+				"Passwords do not match. Please check your password"
 			)
 			return
 		}
 		try {
-			const response = await createAuthUserWithEmailAndPassword(email, password)
-			await createUserDocFromAuth(response.user, { displayName })
+			const { user } = await createAuthUserWithEmailAndPassword(email, password)
+
+			await createUserDocFromAuth(
+				user,
+				{ cartItems, cartCount, cartAmount },
+				{ displayName }
+			)
+
 			resetForm()
-			console.log(response)
+			navigate(-1)
 		} catch (error) {
 			if (error.code === "auth/email-already-in-use") {
 				setFormErrors({
@@ -112,6 +105,7 @@ const SignUp = () => {
 			console.log("User creation encountered an error ", error.message)
 		}
 	}
+
 	return (
 		<div className="signup-form-container">
 			<h2>Sign Up</h2>
@@ -152,7 +146,9 @@ const SignUp = () => {
 					error={confirmPasswordError}
 				/>
 				{authError && <p className="error">{authError}</p>}
-				<Button type="submit">Sign up</Button>
+				<Button type="submit" buttonType="primary">
+					Sign up
+				</Button>
 			</form>
 		</div>
 	)

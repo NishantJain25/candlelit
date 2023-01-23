@@ -1,14 +1,28 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: 'Cinzel Decorative', cursive;
+$secondary-font: 'Raleway', sans-serif;
 .button-container{
-    width: 100%;
     border: 1px solid black;
     height: 50px;
     transition: 0.3s all ease;
     margin: 20px 0px;
-    background-color: transparent;
-    &:hover{
+    font-family: $secondary-font;
+    &.primary{
         background-color: black;
-        color: white
+        color: white;
+        &:hover{
+            background-color: transparent;
+            color: black;
+        }
+    }
+    
+    &.secondary{
+        background-color: transparent;
+        &:hover{
+            background-color: black;
+            color: white
+        }
     }
 }
-
 //set styles for primary and secondary

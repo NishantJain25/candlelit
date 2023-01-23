@@ -4,6 +4,7 @@ import {
 	doc,
 	getDoc,
 	setDoc,
+	updateDoc,
 	collection,
 	writeBatch,
 	query,
@@ -57,7 +58,11 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 	return await createUserWithEmailAndPassword(auth, email, password)
 }
 
-export const createUserDocFromAuth = async (userAuth, additionalInfo = {}) => {
+export const createUserDocFromAuth = async (
+	userAuth,
+	cartData,
+	additionalInfo = {}
+) => {
 	if (!userAuth) return
 
 	const userDocRef = doc(db, "users", userAuth.uid)
@@ -74,6 +79,8 @@ export const createUserDocFromAuth = async (userAuth, additionalInfo = {}) => {
 				createdAt,
 				...additionalInfo,
 			})
+
+			await createCart(userAuth.uid, cartData)
 		} catch (error) {
 			console.error("Error creating user: ", error)
 		}
@@ -102,7 +109,18 @@ export const getUser = async (uid) => {
 		console.log(error)
 	}
 }
-const signUserOut = async () => {
+
+export const updateUser = async (userID, userData) => {
+	if (!userID) return
+
+	try {
+		const docRef = doc(db, "users", userID)
+		await updateDoc(docRef, userData)
+	} catch (error) {
+		console.log(error)
+	}
+}
+export const signUserOut = async () => {
 	await signOut(auth)
 }
 
@@ -120,12 +138,79 @@ export const getAllProducts = async (filters = []) => {
 	try {
 		const querySnapshot = await getDocs(q)
 		const products = querySnapshot.docs.reduce((arr, docSnapshot, index) => {
-			console.log(docSnapshot)
 			arr[index] = docSnapshot.data()
 			return arr
 		}, [])
 		return products
 	} catch (error) {
 		console.log(error)
+	}
+}
+
+export const createCart = async (userID, cartData) => {
+	const collectionRef = collection(db, "cart")
+	const docRef = doc(collectionRef, userID)
+
+	try {
+		await setDoc(docRef, cartData)
+	} catch (err) {
+		console.log(err)
+	}
+}
+export const getUserCart = async (userID) => {
+	try {
+		const docRef = doc(db, "cart", userID)
+		const docSnap = await getDoc(docRef)
+		if (docSnap.exists()) {
+			return docSnap.data()
+		} else {
+			return null
+		}
+	} catch (err) {
+		console.log(err)
+	}
+}
+export const updateUserCart = async (userID, cartData) => {
+	if (!userID) return
+
+	try {
+		const docRef = doc(db, "cart", userID)
+		await updateDoc(docRef, cartData)
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export const getCategories = async () => {
+	var categoriesList = []
+	try {
+		const querySnapshot = await getDocs(collection(db, "categories"))
+		querySnapshot.forEach((doc) => {
+			categoriesList.push(doc.data())
+		})
+
+		return categoriesList
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export const getCategoryFromDatabase = async (category) => {
+	const collectionRef = collection(db, "categories")
+	const docRef = doc(collectionRef)
+	const q = query(collectionRef, where("name", "==", category))
+	try {
+		const querySnapshot = await getDocs(q)
+		const categoryData = querySnapshot.docs.reduce(
+			(arr, docSnapshot, index) => {
+				arr[index] = docSnapshot.data()
+				return arr
+			},
+			[]
+		)
+		console.log(categoryData[0])
+		return categoryData[0]
+	} catch (err) {
+		console.log(err)
 	}
 }

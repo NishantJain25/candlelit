@@ -6,7 +6,18 @@ import Home from "./pages/home/home.component"
 import Shop from "./pages/shop/shop.component"
 import Authentication from "./pages/authentication/authentication.component"
 import Product from "./pages/product/product.component"
+import Category from "./pages/category/category.component"
+import Cart from "./pages/cart/cart.component"
+import About from "./pages/about/about.component"
+import Account from "./pages/account/account.component"
+import Contact from "./pages/contact/contact.component"
+import Checkout from "./pages/checkout/checkout.component"
+import ErrorPage from "./pages/error-page/error-page.component"
+
 import { UserProvider } from "./contexts/user.context"
+import { ProductProvider } from "./contexts/product.context"
+import { CartProvider } from "./contexts/cart.context"
+import { CategoryProvider } from "./contexts/category.context"
 import reportWebVitals from "./reportWebVitals"
 import {
 	createBrowserRouter,
@@ -17,11 +28,17 @@ import {
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route path="/" element={<App />}>
+		<Route path="/" element={<App />} errorElement={<ErrorPage />}>
 			<Route index element={<Home />} />
 			<Route path="/shop" element={<Shop />} />
+			<Route path="/categories/:category" element={<Category />} />
 			<Route path="/product/:productId" element={<Product />} />
+			<Route path="/cart" element={<Cart />} />
+			<Route path="/about" element={<About />} />
+			<Route path="/account/*" element={<Account />} />
+			<Route path="/contact" element={<Contact />} />
 			<Route path="/auth" element={<Authentication />} />
+			<Route path="/checkout" element={<Checkout />} />
 		</Route>
 	)
 )
@@ -30,7 +47,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
 	<React.StrictMode>
 		<UserProvider>
-			<RouterProvider router={router} />
+			<CategoryProvider>
+				<ProductProvider>
+					<CartProvider>
+						<RouterProvider router={router} />
+					</CartProvider>
+				</ProductProvider>
+			</CategoryProvider>
 		</UserProvider>
 	</React.StrictMode>
 )

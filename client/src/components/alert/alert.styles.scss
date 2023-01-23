@@ -1,0 +1,30 @@
+$secondary-font: "Raleway", sans-serif;
+.alert {
+	border-radius: 0;
+	border: 0;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: 0;
+	margin: 0;
+	transition: all 0.3s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	font-family: $secondary-font;
+	font-weight: 500;
+
+	p {
+		margin: 0;
+	}
+
+	&.success {
+		background-color: #8dd5b9;
+	}
+
+	&.danger {
+		background-color: #842029;
+	}
+}

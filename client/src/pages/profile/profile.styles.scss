@@ -1,0 +1,59 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
+.profile {
+	header p {
+		font-size: 20px;
+		font-weight: 700;
+		font-family: $secondary-font;
+	}
+	.detail-container {
+		position: relative;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		padding: 24px;
+
+		.detail-field {
+			margin-bottom: 20px;
+		}
+
+		p {
+			margin-bottom: 0px;
+		}
+		#edit-button {
+			background: none;
+			border: 1px solid transparent;
+			width: fit-content;
+			position: absolute;
+			top: 24px;
+			right: 24px;
+			transition: all 0.2s ease;
+			&:hover {
+				border: 1px solid black;
+			}
+		}
+		.label {
+			font-size: 14px;
+			color: $secondary-color;
+		}
+		.group {
+			margin: 0;
+		}
+
+		.form-buttons {
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+			gap: 10px;
+
+			button {
+				flex: 1;
+			}
+		}
+
+		
+	}
+}

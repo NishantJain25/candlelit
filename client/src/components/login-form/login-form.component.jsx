@@ -1,9 +1,11 @@
 import "./login-form.styles.scss"
 import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import FormInput from "../../components/form-input/form-input.component"
 import Button from "../../components/button/button.component"
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils"
 const Login = () => {
+	const navigate = useNavigate()
 	const defaultFormFields = {
 		email: "",
 		password: "",
@@ -46,9 +48,10 @@ const Login = () => {
 		}
 
 		try {
-			const response = await signInAuthUserWithEmailAndPassword(email, password)
-			console.log(response)
+			const { user } = await signInAuthUserWithEmailAndPassword(email, password)
+
 			resetForm()
+			navigate(-1)
 		} catch (error) {
 			console.log(error.code)
 		}

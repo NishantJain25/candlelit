@@ -1,10 +1,43 @@
+
 .App {
   text-align: center;
   display: flex;
   flex-flow: column;
-  height: 100vh;
-  padding: 0px 50px;
+  min-height: 100vh;
+  padding: 0px;
   box-sizing: border-box;
+ align-items: center;
+ background-color: rgb(250,249,248);
 }
 
+.container{
+  flex-grow: 1;
+}
 
+::-webkit-scrollbar{
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+
+  border-radius: 5px;
+  background: #888; 
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scroll-top{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+  background-color: black;
+  color: white;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}

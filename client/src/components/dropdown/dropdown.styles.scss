@@ -1,0 +1,31 @@
+.dropdown {
+	position: relative;
+	p {
+		margin: 0;
+	}
+	.dropdown-button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 200px;
+		height: 40px;
+		background-color: white;
+		border: 1px solid rgb(220, 220, 220);
+		padding: 1em;
+		cursor: pointer;
+	}
+
+	.dropdown-container {
+		position: absolute;
+		width: 200px;
+		background-color: white;
+		cursor: pointer;
+		.dropdown-option {
+			padding: 1em;
+			transition: 0.3s all ease;
+			&:hover {
+				background-color: rgb(240, 239, 238);
+			}
+		}
+	}
+}

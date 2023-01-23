@@ -1,0 +1,35 @@
+$primary-color: black;
+
+.checkout-product {
+	border-bottom: 1px solid rgb(230, 230, 230);
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	column-gap: 20px;
+	padding: 20px 0px;
+	box-sizing: border-box;
+	.img {
+		background-size: cover;
+		background-position: center;
+	}
+	a {
+		text-decoration: none;
+	}
+	p {
+		margin-bottom: 5px;
+		color: $primary-color;
+	}
+	.details {
+		text-align: left;
+		font-size: 1rem;
+
+		.info-grid {
+			margin-top: 10px;
+			font-size: 0.7rem;
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			span {
+				font-size: 0.5rem;
+			}
+		}
+	}
+}

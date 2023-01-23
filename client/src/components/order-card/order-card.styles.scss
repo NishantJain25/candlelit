@@ -1,0 +1,36 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
+.order-card {
+	padding: 24px;
+	display: grid;
+	grid-template-columns: 2.5fr 2fr 0.5fr;
+	column-gap: 50px;
+	row-gap: 10px;
+	width: 100%;
+	text-align: left;
+	font-family: $secondary-font;
+
+	p {
+		margin: 0;
+	}
+	#title {
+		font-weight: 700;
+		font-size: 16px;
+	}
+	#products {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-lines: 2;
+	}
+	#expand-button {
+		text-align: right;
+	}
+}
+.expanded {
+	#products {
+		white-space: normal;
+	}
+}

@@ -1,0 +1,75 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
+.account-container {
+	width: 75%;
+	padding: 50px 100px;
+	box-sizing: border-box;
+	animation: fade-in 0.3s ease;
+	h1 {
+		font-family: $primary-font;
+	}
+
+	.grid {
+		margin: 50px 0px;
+
+		.actions {
+			width: 25%;
+			display: block;
+			float: left;
+			text-align: left;
+			position: sticky;
+			top: 100px;
+			margin-right: 100px;
+			.action-item {
+				height: 50px;
+				display: flex;
+				align-items: center;
+				padding: 10px;
+				justify-content: space-between;
+
+				a {
+					display: block;
+					text-decoration: none;
+					color: black;
+					width: 100%;
+				}
+
+				&:hover {
+					font-weight: 500;
+
+					svg {
+						transform: translateX(2px);
+						transition: all 0.3s ease;
+					}
+				}
+			}
+
+			.action-item:nth-child(odd) {
+				background-color: white;
+			}
+			button {
+				width: 100%;
+			}
+
+			.active {
+				font-weight: 500;
+			}
+		}
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.25;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+

@@ -1,0 +1,56 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
+
+@mixin shrinkLabel {
+	top: -12px;
+	font-size: 12px;
+	color: $secondary-color;
+}
+.address-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 30px;
+
+	.group {
+		display: flex;
+		height: 45px;
+		align-items: center;
+	}
+	.state-dropdown {
+		position: relative;
+		margin: 45px 0px;
+		select {
+			height: 45px;
+			border-width: 0px 0px 1px 0px;
+			border-radius: none;
+			border-style: solid;
+			display: block;
+			width: 100%;
+			&.error {
+				border-color: red;
+			}
+			&:focus {
+				outline: none;
+			}
+			&:focus ~ .form-input-label {
+				@include shrinkLabel;
+			}
+		}
+		.form-input-label {
+			color: $secondary-color;
+			font-family: $secondary-font;
+			position: absolute;
+			pointer-events: none;
+			font-size: 16px;
+			left: 5px;
+			top: 10px;
+			transition: 0.3s all ease;
+
+			&.shrink {
+				@include shrinkLabel();
+			}
+		}
+	}
+}

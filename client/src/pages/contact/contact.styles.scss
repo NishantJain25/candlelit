@@ -1,0 +1,38 @@
+$primary-color: black;
+$secondary-color: grey;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
+
+.contact-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	flex-grow: 1;
+	margin: 40px 100px 100px 100px;
+	section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 100px;
+
+		h1 {
+			width: 100%;
+			text-align: left;
+			font-family: $primary-font;
+		}
+	}
+
+	.contact-form {
+		background-color: white;
+		box-sizing: border-box;
+
+		font-family: $primary-font;
+
+		form {
+			width: 100%;
+		}
+		button {
+			width: 100%;
+		}
+	}
+}
