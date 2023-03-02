@@ -13,6 +13,7 @@ import Account from "./pages/account/account.component"
 import Contact from "./pages/contact/contact.component"
 import Checkout from "./pages/checkout/checkout.component"
 import ErrorPage from "./pages/error-page/error-page.component"
+import UploadProduct from "./pages/upload-product/upload-product.component"
 
 import { UserProvider } from "./contexts/user.context"
 import { ProductProvider } from "./contexts/product.context"
@@ -39,6 +40,7 @@ const router = createBrowserRouter(
 			<Route path="/contact" element={<Contact />} />
 			<Route path="/auth" element={<Authentication />} />
 			<Route path="/checkout" element={<Checkout />} />
+			<Route path="/upload" element={<UploadProduct />} />
 		</Route>
 	)
 )

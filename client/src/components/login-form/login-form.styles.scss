@@ -1,11 +1,18 @@
 $primary-color: black;
 $secondary-color: grey;
-$primary-font: 'Cinzel Decorative', cursive;
-$secondary-font: 'Raleway', sans-serif;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
 
-.login-form-container{
-    width: 20vw;
-    display: flex;
-    flex-direction: column;
-    font-family: $primary-font;
+.login-form-container {
+	width: 20vw;
+	display: flex;
+	flex-direction: column;
+	font-family: $primary-font;
+}
+#forgot-password {
+	text-align: right;
+	text-decoration: underline;
+	font-family: $secondary-font;
+	font-weight: bold;
+	cursor: pointer;
 }

@@ -6,7 +6,8 @@ import { faTrashCan } from "@fortawesome/free-regular-svg-icons"
 import "./cart-item.styles.scss"
 
 const CartItem = ({ product }) => {
-	const { id, name, price, quantity, images, scent, color, category } = product
+	const { id, name, price, quantity, images, fragrance, color, category } =
+		product
 
 	const { modifyCartItemQuantity, addItemToCart, removeItemFromCart } =
 		useContext(CartContext)
@@ -23,12 +24,12 @@ const CartItem = ({ product }) => {
 			<NavLink to={`/product/${id}`}>
 				<div className="product">
 					<div className="image">
-						<img src={images[color]} />
+						<img src={images[0]} />
 					</div>
 					<div className="details">
 						<p id="name">{name}</p>
 						<p id="info">
-							{category}, {scent}
+							{category}, {fragrance}
 						</p>
 						<div id="color-pill" style={{ backgroundColor: `${color}` }}>
 							{color}

@@ -4,7 +4,7 @@ import { VscEdit } from "react-icons/vsc"
 import Button from "../../components/button/button.component"
 import FormInput from "../../components/form-input/form-input.component"
 
-import { updateUser, getUser } from "../../utils/firebase/firebase.utils"
+import { updateUser } from "../../utils/firebase/firebase.utils"
 import "./profile.styles.scss"
 const Profile = ({ user, setShouldUpdate, setShow }) => {
 	const [currentUser, setCurrentUser] = useState(user)
@@ -19,7 +19,15 @@ const Profile = ({ user, setShouldUpdate, setShow }) => {
 	const [formFields, setFormFields] = useState({
 		displayName: currentUser.displayName,
 
-		address: "B/1507, RNA Royale Park",
+		address: currentUser.address
+			? currentUser.address.house +
+			  ", " +
+			  currentUser.address.address +
+			  ", " +
+			  currentUser.address.city +
+			  ", " +
+			  currentUser.address.state
+			: "",
 	})
 	const [formErrors, setFormErrors] = useState(defaultFormErrors)
 
@@ -92,7 +100,22 @@ const Profile = ({ user, setShouldUpdate, setShow }) => {
 				<div className="detail-field">
 					<p className="label">Address</p>
 					<p className="value" style={{ display: `${editMode ? "none" : ""}` }}>
-						{currentUser.address}
+						{currentUser.address ? address : "No address saved"}
+					</p>
+					<FormInput
+						name="address"
+						value={address}
+						onChange={handleChange}
+						style={{ display: `${editMode ? "" : "none"}` }}
+						error={addressError}
+					/>
+				</div>
+				<div className="detail-field">
+					<p className="label">Phone Number</p>
+					<p className="value" style={{ display: `${editMode ? "none" : ""}` }}>
+						{currentUser.phoneNumber
+							? currentUser.phoneNumber
+							: "No number saved"}
 					</p>
 					<FormInput
 						name="address"

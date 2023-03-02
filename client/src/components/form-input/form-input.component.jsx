@@ -2,9 +2,20 @@ import "./form-input.styles.scss"
 import React from "react"
 
 const FormInput = ({ label, error, ...otherProps }) => {
+	
 	return (
 		<div className="group">
-			<input className={`${error ? "error" : ""} form-input`} {...otherProps} />
+			{otherProps.type === "textarea" ? (
+				<textarea
+					className={`${error ? "error" : ""} form-input`}
+					{...otherProps}
+				/>
+			) : (
+				<input
+					className={`${error ? "error" : ""} form-input`}
+					{...otherProps}
+				/>
+			)}
 			{label && (
 				<label
 					className={`${

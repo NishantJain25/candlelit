@@ -4,14 +4,14 @@ import { NavLink } from "react-router-dom"
 import "./checkout-product.styles.scss"
 
 const CheckoutProduct = ({ cartItem }) => {
-	console.log(cartItem)
-	const { id, name, price, color, images, weight, quantity, scent } = cartItem
+	const { id, name, price, color, images, weight, quantity, fragrance } =
+		cartItem
 	return (
 		<div className="checkout-product">
 			<div
 				className="img"
 				style={{
-					backgroundImage: `url(${images[color]})`,
+					backgroundImage: `url(${images[0]})`,
 					backgroundColor: "beige",
 				}}
 			></div>
@@ -23,8 +23,8 @@ const CheckoutProduct = ({ cartItem }) => {
 				<div className="info-grid">
 					<p id="cart-quantity">Quantity:</p>
 					<p id="value">{quantity}</p>
-					<p id="scent">Scent:</p>
-					<p id="value">{scent}</p>
+					<p id="fragrance">fragrance:</p>
+					<p id="value">{fragrance}</p>
 					<p id="color">Colour:</p>
 					<p id="Value">{color}</p>
 					<p id="weight">Weight:</p>

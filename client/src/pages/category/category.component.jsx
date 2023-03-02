@@ -27,7 +27,7 @@ const Category = () => {
 		setProductData(filteredProducts)
 	}, [productList])
 
-	const { name, desc, imageUrl } = categoryData
+	const { categoryName, categoryDesc, imageUrl } = categoryData
 	console.log(productData)
 	return (
 		<div className="category-container">
@@ -36,8 +36,8 @@ const Category = () => {
 					<img src={imageUrl} />
 				</div>
 				<div className="title-text">
-					<h1>{name}</h1>
-					<p>{desc}</p>
+					<h1>{categoryName}</h1>
+					<p>{categoryDesc}</p>
 				</div>
 			</section>
 			<section className="shop">

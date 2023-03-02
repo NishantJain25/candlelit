@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app"
+
 import {
 	getFirestore,
 	doc,
@@ -18,7 +19,15 @@ import {
 	signInWithEmailAndPassword,
 	signOut,
 	onAuthStateChanged,
+	sendPasswordResetEmail,
 } from "firebase/auth"
+
+import {
+	getStorage,
+	ref,
+	uploadBytesResumable,
+	getDownloadURL,
+} from "firebase/storage"
 
 const firebaseConfig = {
 	apiKey: "AIzaSyBMcYl13tBMvn6rmfG8q-1mdKVS_lf5VA4",
@@ -36,6 +45,7 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
 const auth = getAuth(app)
+const storage = getStorage(app)
 
 export const addCollectionsAndDocuments = async (
 	collectionKey,
@@ -52,6 +62,37 @@ export const addCollectionsAndDocuments = async (
 	console.log("done")
 }
 
+export const addImageToStorage = async (category, productImg, productName) => {
+	console.log(category)
+	const categoryRef = ref(storage, `product-images/${category}/${productName}`)
+	const uploadTask = uploadBytesResumable(categoryRef, productImg)
+
+	uploadTask.on(
+		"state_changed",
+		(snapshot) => {
+			const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+			console.log("Progress: ", progress)
+
+			switch (snapshot.state) {
+				case "paused":
+					console.log("Upload is paused")
+					break
+				case "running":
+					console.log("Upload is running")
+					break
+			}
+		},
+		(error) => {
+			console.log(error.message)
+		},
+		() => {
+			getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+				console.log("file available at ", downloadUrl)
+				return downloadUrl
+			})
+		}
+	)
+}
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
 	if (!email || !password) return
 
@@ -124,6 +165,9 @@ export const signUserOut = async () => {
 	await signOut(auth)
 }
 
+export const forgotPassword = (email) => {
+	return sendPasswordResetEmail(auth, email)
+}
 export const onAuthStateChangeListener = (callback) => {
 	onAuthStateChanged(auth, callback)
 }
@@ -138,10 +182,23 @@ export const getAllProducts = async (filters = []) => {
 	try {
 		const querySnapshot = await getDocs(q)
 		const products = querySnapshot.docs.reduce((arr, docSnapshot, index) => {
-			arr[index] = docSnapshot.data()
+			arr[index] = { ...docSnapshot.data(), id: docSnapshot.id }
 			return arr
 		}, [])
 		return products
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export const getProductById = async (id) => {
+	const productRef = doc(db, "products", id)
+
+	try {
+		const docSnap = await getDoc(productRef)
+		if (docSnap.exists()) {
+			return docSnap.data()
+		}
 	} catch (error) {
 		console.log(error)
 	}
@@ -214,3 +271,5 @@ export const getCategoryFromDatabase = async (category) => {
 		console.log(err)
 	}
 }
+
+export const addMessageToDatabase = async (messageInfo) => {}

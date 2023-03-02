@@ -9,17 +9,17 @@ import { VscAdd, VscChromeMinimize } from "react-icons/vsc"
 import "./checkout.styles.scss"
 
 const Checkout = () => {
-	const [showDetails, setShowDetails] = useState(true)
+	const [showDetails, setShowDetails] = useState(false)
 	const { cartItems, cartAmount, cartCount } = useContext(CartContext)
 	const { currentUser } = useContext(UserContext)
-	
+	console.log(currentUser)
 	return (
 		<div className="checkout-contaienr">
 			<div className="checkout-grid">
 				<section className="information">
 					<div className="information-container">
 						<p id="title">Delivery Address</p>
-						<AddressForm />
+						<AddressForm currentUser={currentUser} />
 					</div>
 					<div className="information-container">
 						<p id="title">Payment Method</p>

@@ -3,7 +3,6 @@ import { getAllProducts } from "../utils/firebase/firebase.utils"
 
 export const ProductContext = createContext({
 	productList: [],
-	
 })
 
 export const ProductProvider = ({ children }) => {

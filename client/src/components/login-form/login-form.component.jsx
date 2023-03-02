@@ -3,7 +3,10 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import FormInput from "../../components/form-input/form-input.component"
 import Button from "../../components/button/button.component"
-import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils"
+import {
+	signInAuthUserWithEmailAndPassword,
+	forgotPassword,
+} from "../../utils/firebase/firebase.utils"
 const Login = () => {
 	const navigate = useNavigate()
 	const defaultFormFields = {
@@ -30,6 +33,13 @@ const Login = () => {
 		setFormErrors(defaultFormErrors)
 	}
 
+	const forgotPasswordHandler = () => {
+		if (!email) return
+		forgotPassword(email).then(() => {
+			resetForm()
+			alert("Please check your email for resetting the password")
+		})
+	}
 	const onSubmit = async (event) => {
 		event.preventDefault()
 
@@ -77,10 +87,15 @@ const Login = () => {
 					onChange={handleChange}
 					error={passwordError}
 				/>
+
 				<Button type="submit" buttonType="primary">
 					Login
 				</Button>
 			</form>
+			<button id="forgot-password" onClick={forgotPasswordHandler}>
+				Forgot password?
+			</button>
+			
 		</div>
 	)
 }
