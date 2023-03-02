@@ -201,6 +201,9 @@ $secondary-font: "Raleway", sans-serif;
 }
 
 @media screen and (max-width: 425px) {
+	header {
+		padding: 0 2em;
+	}
 	.home-container {
 		#landing-page {
 			.background-image-1 {
@@ -266,6 +269,26 @@ $secondary-font: "Raleway", sans-serif;
 							font-size: 0.8rem;
 						}
 					}
+				}
+			}
+		}
+
+		#home-shop {
+			padding: 5em 0;
+
+			.home-shop-container {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				column-gap: 20px;
+				row-gap: 20px;
+				width: 100vw;
+				box-sizing: border-box;
+				padding: 0 2em;
+				#view-shop-button {
+					background: none;
+					border: 1px solid black;
+					margin: 10px;
+					border-radius: 50%;
 				}
 			}
 		}

@@ -28,23 +28,25 @@ const Shop = () => {
 				<header className="shop-header">
 					<h1>Shop</h1>
 				</header>
-				<aside className="category-list">
-					<h3>Categories</h3>
-					<div className="category-buttons">
-						{category_list.map((category) => (
-							<button id="category" onClick={() => updateCategory(category)}>
-								{category}
-							</button>
-						))}
-					</div>
-				</aside>
-				<section className="shop-items">
-					<div className="shop-items-container">
-						{products.map((product, key) => (
-							<ProductCard key={key} product={product} />
-						))}
-					</div>
-				</section>
+				<div className="items-container">
+					<aside className="category-list">
+						<h3>Categories</h3>
+						<div className="category-buttons">
+							{category_list.map((category) => (
+								<button id="category" onClick={() => updateCategory(category)}>
+									{category}
+								</button>
+							))}
+						</div>
+					</aside>
+					<section className="shop-items">
+						<div className="shop-items-container">
+							{products.map((product, key) => (
+								<ProductCard key={key} product={product} />
+							))}
+						</div>
+					</section>
+				</div>
 			</div>
 		</div>
 	)
