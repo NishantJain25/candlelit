@@ -17,16 +17,17 @@ const Navigation = () => {
 				className="hamburger-menu"
 				onClick={() => setIsSidenavOpen((currentState) => !currentState)}
 			>
-				{isSidenavOpen ? <VscChromeClose /> : <VscMenu />}
+				{isSidenavOpen ? <VscChromeClose id="close" /> : <VscMenu id="menu" />}
 			</div>
 			<div
 				className="sidenav"
-				style={{ width: `${isSidenavOpen ? "75%" : "0"}` }}
+				style={{ width: `${isSidenavOpen ? "100%" : "0"}` }}
 			>
 				<div className="links">
 					<NavLink
 						to="/"
 						className={({ isActive }) => (isActive ? "active" : "")}
+						onClick={() => setIsSidenavOpen(false)}
 						end
 					>
 						HOME
@@ -34,18 +35,21 @@ const Navigation = () => {
 					<NavLink
 						to="/shop"
 						className={({ isActive }) => (isActive ? "active" : "")}
+						onClick={() => setIsSidenavOpen(false)}
 					>
 						SHOP
 					</NavLink>
 					<NavLink
 						to="/about"
 						className={({ isActive }) => (isActive ? "active" : "")}
+						onClick={() => setIsSidenavOpen(false)}
 					>
 						ABOUT US
 					</NavLink>
 					<NavLink
 						to="/contact"
 						className={({ isActive }) => (isActive ? "active" : "")}
+						onClick={() => setIsSidenavOpen(false)}
 					>
 						CONTACT US
 					</NavLink>

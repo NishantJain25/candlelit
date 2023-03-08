@@ -28,31 +28,43 @@ const CartItem = ({ product }) => {
 					</div>
 					<div className="details">
 						<p id="name">{name}</p>
-						<p id="info">
-							{category}, {fragrance}
-						</p>
-						<div id="color-pill" style={{ backgroundColor: `${color}` }}>
-							{color}
+						<div id="price">Rs. {price}</div>
+						<div id="info">
+							<p className="label">Category: </p>
+							<p className="value">{category}</p>
+							<p className="label">Fragrance: </p>
+							<p className="value">{fragrance}</p>
+							<p className="label">Colour:</p>
+							<div
+								className="value"
+								id="color-pill"
+								style={{ backgroundColor: `${color}` }}
+							>
+								{color}
+							</div>
+							<p className="label">Total Price: </p>
+							<p className="value" id="total">
+								Rs. {price * quantity}
+							</p>
 						</div>
+
+						<div className="quantity" id="quantity">
+							<button id="subtract" onClick={() => handleQuantity("subtract")}>
+								-
+							</button>
+							<span>{quantity}</span>
+							<button id="add" onClick={() => handleQuantity("add")}>
+								+
+							</button>
+						</div>
+					</div>
+					<div className="remove-button">
+						<button id="remove" onClick={() => removeItemFromCart(product)}>
+							<FontAwesomeIcon icon={faTrashCan} />
+						</button>
 					</div>
 				</div>
 			</NavLink>
-			<div className="price">Rs. {price}</div>
-			<div className="quantity" id="quantity">
-				<button id="subtract" onClick={() => handleQuantity("subtract")}>
-					-
-				</button>
-				<span>{quantity}</span>
-				<button id="add" onClick={() => handleQuantity("add")}>
-					+
-				</button>
-			</div>
-			<div className="total">Rs. {price * quantity}</div>
-			<div className="remove-button">
-				<button id="remove" onClick={() => removeItemFromCart(product)}>
-					<FontAwesomeIcon icon={faTrashCan} />
-				</button>
-			</div>
 		</div>
 	)
 }

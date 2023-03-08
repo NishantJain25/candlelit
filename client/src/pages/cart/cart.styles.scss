@@ -25,14 +25,6 @@ $secondary-font: "Raleway", sans-serif;
 			width: 100%;
 			text-align: left;
 
-			.table-header {
-				display: grid;
-				grid-template-columns: 60% 10% 15% 10% 5%;
-				gap: 10px;
-				color: $secondary-color;
-				font-family: $secondary-font;
-				font-size: 15px;
-			}
 			#cart-item-link {
 				text-decoration: none;
 				color: black;
@@ -96,7 +88,43 @@ $secondary-font: "Raleway", sans-serif;
 }
 
 @media only screen and (max-width: 768px) {
-	.cart-table-container {
-		flex-direction: column;
+	.cart-container {
+		margin: 50px 0 0 0;
+		width: 100%;
+		.cart-table-container {
+			flex-direction: column;
+			justify-content: space-between;
+
+			.cart-table {
+				.table-rows {
+					padding: 0 12px;
+					box-sizing: border-box;
+				}
+			}
+			.order-summary {
+				#title {
+					font-size: 16px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.cart-container {
+		.cart-table-container {
+			.order-summary {
+				.checkout-buttons {
+					display: flex;
+					flex-direction: column-reverse;
+					flex: 1;
+					a {
+						flex: unset;
+						width: 100%;
+						font-size: 14px;
+					}
+				}
+			}
+		}
 	}
 }

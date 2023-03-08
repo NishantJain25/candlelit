@@ -16,13 +16,7 @@ const Cart = () => {
 			</header>
 			<div className="cart-table-container">
 				<div className="cart-table">
-					<div className="table-header">
-						<p>Product</p>
-						<p>Price</p>
-						<p>Quantity</p>
-						<p>Total</p>
-						<div className="remove-item"></div>
-					</div>
+					
 					<div className="table-rows">
 						{cartItems.map((cartItem, key) => (
 							<CartItem product={cartItem} key={key} />

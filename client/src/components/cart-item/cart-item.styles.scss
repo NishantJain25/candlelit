@@ -1,72 +1,163 @@
 $primary-color: black;
 $secondary-color: grey;
-$primary-font: 'Cinzel Decorative', cursive;
-$secondary-font: 'Raleway', sans-serif;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
 
-.cart-item-container{
-    display: grid;
-    grid-template-columns: 60% 10% 15% 10% 5%;
-    padding: 10px 0px;
-    border-width: 1px 0px;
-    border-color: rgb(230,230,230);
-    border-style: solid;
-    align-items: center;
-    font-family: $secondary-font;
-    gap: 10px;
-    a{
-        text-decoration: none;
-    }
-    .product{
-        display: grid;
-        align-items: center;
-        grid-template-columns: 40% 60%;
-        gap: 20px;
-        overflow-wrap: normal;
-        color: black;
-        
-        .image{
-            aspect-ratio: 1;
-            width: 100%;
-            margin-right: 20px;
-            img{
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-        }
-        .details{
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-       
-        #name{
-            margin: 0;
-        }
-        #info{
-            font-size: 12px; 
-            color: $secondary-color;
-            margin: 0;
-        }
-        #color-pill{
-            border-radius:30px;
-            
-            width: fit-content;
-            padding: 5px 10px;
-            font-size: 12px;
-            color: $secondary-color;
-        }
-        
-    }
+.cart-item-container {
+	display: grid;
+	position: relative;
+	grid-template-columns: 1fr 1fr;
+	padding: 10px 0px;
+	border-width: 1px 0px;
+	border-color: rgb(230, 230, 230);
+	border-style: solid;
+	align-items: center;
+	font-family: $secondary-font;
+	gap: 10px;
+	a {
+		text-decoration: none;
+	}
+	.product {
+		display: grid;
 
-    .quantity{
-        display: flex;
-        justify-content: flex-start;
-        margin: 10px 10px 10px 0px;
-    }
+		align-items: center;
+		grid-template-columns: 40% 60%;
+		gap: 20px;
+		overflow-wrap: normal;
+		color: black;
 
-    #remove{
-        background: none;
-        border: none;
-    }
+		.image {
+			width: 100%;
+			margin-right: 20px;
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+		.details {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		#name {
+			margin: 0;
+		}
+		#info {
+			display: grid;
+			align-items: center;
+			grid-template-columns: 1fr 2fr 1fr 2fr;
+			gap: 20px;
+			.label {
+				font-size: 12px;
+				color: $secondary-color;
+				margin: 0;
+			}
+			.value {
+				font-size: 14px;
+				margin: 0;
+			}
+			#color-pill {
+				border-radius: 30px;
+
+				width: fit-content;
+				padding: 5px 10px;
+				font-size: 12px;
+				color: $secondary-color;
+			}
+		}
+		.quantity {
+			display: flex;
+			justify-content: center;
+			margin: 10px 0 0 0;
+			width: 150px;
+		}
+	}
+
+	#remove {
+		background: none;
+		border: none;
+		position: absolute;
+		top: 30px;
+		right: 30px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.cart-item-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		.product {
+			grid-template-columns: 100px auto;
+			justify-content: flex-start;
+
+			.details #name {
+				text-overflow: ellipsis;
+				width: 75%;
+				max-lines: 2;
+			}
+			.image {
+				align-items: flex-start;
+				height: 100%;
+				img {
+					height: unset;
+					width: 100%;
+				}
+			}
+			#info {
+				grid-template-columns: 1fr 2fr;
+				gap: unset;
+				column-gap: 5px;
+				row-gap: 0;
+
+				.label {
+					font-size: 10px;
+				}
+				.value {
+					font-size: 12px;
+				}
+			}
+
+			.quantity {
+				height: 75px;
+				width: 100px;
+			}
+		}
+		#remove {
+			top: 10px;
+			right: 0px;
+		}
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.cart-item-container {
+		display: flex;
+		flex-direction: column;
+
+		.product {
+			#info {
+				grid-template-columns: 1fr 2fr;
+
+				.label {
+					font-size: 10px;
+				}
+				.value {
+					font-size: 12px;
+				}
+			}
+
+			.quantity {
+				height: 75px;
+				width: 100%;
+			}
+		}
+		#remove {
+			top: 10px;
+			right: 0px;
+		}
+	}
 }
