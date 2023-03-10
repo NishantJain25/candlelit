@@ -22,13 +22,14 @@ const Category = () => {
 
 	useEffect(() => {
 		const filteredProducts = productList.filter(
-			(product) => product.category.toLowerCase() === category
+			(product) => product.category === category
 		)
+		console.log(filteredProducts)
 		setProductData(filteredProducts)
 	}, [productList])
 
 	const { categoryName, categoryDesc, imageUrl } = categoryData
-	console.log(productData)
+	console.log(productList)
 	return (
 		<div className="category-container">
 			<section className="title">
@@ -36,21 +37,22 @@ const Category = () => {
 					<img src={imageUrl} />
 				</div>
 				<div className="title-text">
-					<h1>{categoryName}</h1>
+					<h1>{category}</h1>
 					<p>{categoryDesc}</p>
 				</div>
 			</section>
 			<section className="shop">
 				<h2>Shop for {category} candles</h2>
-				<div className="product-list">
-					{productData.length > 0 ? (
-						productData.map((product, key) => (
+
+				{productData.length > 0 ? (
+					<div className="product-list">
+						{productData.map((product, key) => (
 							<ProductCard product={product} key={key} />
-						))
-					) : (
-						<p>No products available</p>
-					)}
-				</div>
+						))}
+					</div>
+				) : (
+					<p>No products available</p>
+				)}
 			</section>
 		</div>
 	)
