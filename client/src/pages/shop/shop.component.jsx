@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import ProductCard from "../../components/product-card/product-card.component"
 import "./shop.styles.scss"
-import { ProductContext } from "../../contexts/product.context"
+import { selectProductList } from "../../store/product/product.selector"
 
 const category_list = ["All", "Bubble", "Cylinder", "Sphere"]
 const Shop = () => {
 	const [category, setCategory] = useState("")
 	const [products, setProducts] = useState([])
-	const { productList } = useContext(ProductContext)
+	const productList = useSelector(selectProductList)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)

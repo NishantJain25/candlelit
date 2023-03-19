@@ -71,11 +71,14 @@ $secondary-font: "Raleway", sans-serif;
 		opacity: 1;
 	}
 }
-
+@media screen and (max-width: 1024px) {
+	.account-container {
+		padding: 50px 2em;
+	}
+}
 @media screen and (max-width: 768px) {
 	.account-container {
 		width: 100%;
-		padding: 50px 2em;
 
 		.grid {
 			display: flex;

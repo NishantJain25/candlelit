@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom"
 import "./product-card.styles.scss"
 
 const ProductCard = ({ product }) => {
-	console.log(product)
-	const { id,name, images, price, desc, category, colors } = product
+	const { id, name, images, price, desc, category, colors } = product
 
 	const navigate = useNavigate()
 	const onNavigateHandler = () => navigate(`/product/${id}`)

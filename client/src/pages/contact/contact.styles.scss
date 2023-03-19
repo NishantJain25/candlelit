@@ -36,3 +36,33 @@ $secondary-font: "Raleway", sans-serif;
 		}
 	}
 }
+
+@media screen and (max-width: 1024px) {
+	.contact-container {
+		display: block;
+		section {
+			h1 {
+				text-align: center;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.contact-container {
+		margin: 0;
+		padding: 50px 2em;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.contact-container {
+		h1,
+		h2 {
+			font-size: 20px;
+		}
+		section {
+			padding: 2em;
+		}
+	}
+}

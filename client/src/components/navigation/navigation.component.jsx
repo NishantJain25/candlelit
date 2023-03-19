@@ -1,14 +1,14 @@
 import "./navigation.styles.scss"
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { UserContext } from "../../contexts/user.context"
-import { CartContext } from "../../contexts/cart.context"
+import { selectCurrentUser } from "../../store/user/user.selector"
+import { selectCartCount } from "../../store/cart/cart.selector"
 import { VscMenu, VscChromeClose } from "react-icons/vsc"
 
 const Navigation = () => {
-	const { currentUser } = useContext(UserContext)
-	const { cartCount } = useContext(CartContext)
-
+	const cartCount = useSelector(selectCartCount)
+	const currentUser = useSelector(selectCurrentUser)
 	const [isSidenavOpen, setIsSidenavOpen] = useState(false)
 
 	return (

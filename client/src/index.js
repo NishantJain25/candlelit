@@ -15,8 +15,6 @@ import Checkout from "./pages/checkout/checkout.component"
 import ErrorPage from "./pages/error-page/error-page.component"
 import UploadProduct from "./pages/upload-product/upload-product.component"
 
-import { UserProvider } from "./contexts/user.context"
-import { ProductProvider } from "./contexts/product.context"
 import { CartProvider } from "./contexts/cart.context"
 import { CategoryProvider } from "./contexts/category.context"
 import reportWebVitals from "./reportWebVitals"
@@ -26,6 +24,9 @@ import {
 	Route,
 	createRoutesFromElements,
 } from "react-router-dom"
+import { Provider } from "react-redux"
+import { store, persistor } from "./store/store"
+import { PersistGate } from "redux-persist/integration/react"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -48,15 +49,15 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
 	<React.StrictMode>
-		<UserProvider>
-			<CategoryProvider>
-				<ProductProvider>
+		<Provider store={store}>
+			<PersistGate persistor={persistor}>
+				<CategoryProvider>
 					<CartProvider>
 						<RouterProvider router={router} />
 					</CartProvider>
-				</ProductProvider>
-			</CategoryProvider>
-		</UserProvider>
+				</CategoryProvider>
+			</PersistGate>
+		</Provider>
 	</React.StrictMode>
 )
 

@@ -1,4 +1,9 @@
 import React, { useState, useEffect, useContext } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { selectCartItems } from "../../store/cart/cart.selector"
+import { selectCurrentUser } from "../../store/user/user.selector"
+
+import { addItemToCart } from "../../store/cart/cart.action"
 import { useParams } from "react-router-dom"
 import Alert from "../../components/alert/alert.component"
 import Dropdown from "../../components/dropdown/dropdown.component"
@@ -7,10 +12,13 @@ import "./product.styles.scss"
 
 import { getProductById } from "../../utils/firebase/firebase.utils"
 import Button from "../../components/button/button.component"
-import { CartContext } from "../../contexts/cart.context"
 
 const Product = () => {
 	const { productId } = useParams()
+	const dispatch = useDispatch()
+	const cartItems = useSelector(selectCartItems)
+	const currentUser = useSelector(selectCurrentUser)
+
 	const [productData, setProductData] = useState({})
 	const [viewImage, setViewImage] = useState(false)
 	const [quantity, setQuantity] = useState(1)
@@ -38,16 +46,15 @@ const Product = () => {
 		const getProductData = async () => {
 			const response = await getProductById(productId)
 			console.log(response)
-			setProductData(response)
+			setProductData({ ...response, id: productId })
 			setProductPhoto(response.images[0])
 			setIsLoading(false)
 		}
 		getProductData()
 	}, [])
 
-	const { addItemToCart } = useContext(CartContext)
 	const addToCart = () => {
-		addItemToCart(productData, quantity)
+		dispatch(addItemToCart(currentUser, cartItems, productData, quantity))
 		setShow(true)
 		setTimeout(() => {
 			setShow(false)
@@ -73,7 +80,7 @@ const Product = () => {
 			setViewImage(false)
 		}
 	})
-	console.log(viewImage)
+
 	return (
 		<div className="container">
 			{isLoading ? (

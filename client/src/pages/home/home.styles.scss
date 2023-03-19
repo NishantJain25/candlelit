@@ -199,7 +199,27 @@ $secondary-font: "Raleway", sans-serif;
 		}
 	}
 }
-
+@media screen and (max-width: 768px) {
+	.home-container {
+		#home-about {
+			padding: 0 2em;
+			width: 100%;
+			gap: 100px;
+			.home-about-images {
+				width: 100%;
+				height: auto;
+			}
+			.home-about-text {
+				width: 80%;
+			}
+		}
+		#home-shop {
+			.home-shop-container {
+				width: 100%;
+			}
+		}
+	}
+}
 @media screen and (max-width: 425px) {
 	header {
 		padding: 0 2em;
@@ -278,6 +298,7 @@ $secondary-font: "Raleway", sans-serif;
 
 			.home-shop-container {
 				display: grid;
+				position: relative;
 				grid-template-columns: 1fr 1fr;
 				column-gap: 20px;
 				row-gap: 20px;
@@ -286,9 +307,13 @@ $secondary-font: "Raleway", sans-serif;
 				padding: 0 20px;
 				#view-shop-button {
 					background: none;
+					width: calc(100% - 40px);
+					height: 50px;
+					margin: 0px 20px;
 					border: 1px solid black;
-					margin: 10px;
-					border-radius: 50%;
+					border-radius: 0;
+					position: absolute;
+					bottom: -60px;
 				}
 			}
 		}

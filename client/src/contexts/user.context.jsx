@@ -4,7 +4,6 @@ import {
 	createUserDocFromAuth,
 	getUser,
 } from "../utils/firebase/firebase.utils"
-import { CartContext } from "./cart.context"
 
 export const UserContext = createContext({
 	currentUser: null,

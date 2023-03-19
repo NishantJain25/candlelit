@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import { updateUser, getUser } from "../../utils/firebase/firebase.utils"
 import FormInput from "../../components/form-input/form-input.component"
 import Button from "../../components/button/button.component"
-import { UserContext } from "../../contexts/user.context"
+import { useSelector } from "react-redux"
+import { selectCurrentUser } from "../../store/user/user.selector"
 import "./address-form.styles.scss"
 
 const AddressForm = () => {
 	const [user, setUser] = useState({})
 	const [isLoading, setIsLoading] = useState(false)
-	const { currentUser } = useContext(UserContext)
+	const currentUser = useSelector(selectCurrentUser)
 	const defaultFormFields = {
 		address: "",
 		house: "",

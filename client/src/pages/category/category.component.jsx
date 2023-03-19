@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import ProductCard from "../../components/product-card/product-card.component"
-import { ProductContext } from "../../contexts/product.context"
+import { selectProductList } from "../../store/product/product.selector"
 import { getCategoryFromDatabase } from "../../utils/firebase/firebase.utils"
 import "./category.styles.scss"
 
@@ -9,7 +10,7 @@ const Category = () => {
 	const { category } = useParams()
 	const [categoryData, setCategoryData] = useState([])
 	const [productData, setProductData] = useState([])
-	const { productList } = useContext(ProductContext)
+	const productList = useSelector(selectProductList)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)

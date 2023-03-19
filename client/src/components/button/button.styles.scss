@@ -27,3 +27,9 @@ $secondary-font: "Raleway", sans-serif;
 	}
 }
 //set styles for primary and secondary
+
+@media screen and (max-width: 768px) {
+	.button-container {
+		font-size: 14px;
+	}
+}

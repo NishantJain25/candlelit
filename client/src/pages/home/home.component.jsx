@@ -1,10 +1,15 @@
 import React, { useContext, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { useNavigate, NavLink } from "react-router-dom"
 import ProductCard from "../../components/product-card/product-card.component"
 import Button from "../../components/button/button.component"
 import { CategoryContext } from "../../contexts/category.context"
-import { ProductContext } from "../../contexts/product.context"
-import { addCollectionsAndDocuments } from "../../utils/firebase/firebase.utils"
+import { selectProductList } from "../../store/product/product.selector"
+import { setProductList } from "../../store/product/product.action"
+import {
+	addCollectionsAndDocuments,
+	getAllProducts,
+} from "../../utils/firebase/firebase.utils"
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from "react-icons/rx"
 import LandingImage1 from "../../assets/product-images/bubble-vanilla.jpg"
 import LandingImage2 from "../../assets/product-images/couple-lavender.jpg"
@@ -14,8 +19,8 @@ import "./home.styles.scss"
 
 const Home = () => {
 	const { categoriesList } = useContext(CategoryContext)
-	const { productList } = useContext(ProductContext)
-	console.log(categoriesList)
+	const productList = useSelector(selectProductList)
+	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const onNavigateHandler = () => navigate("/shop")
 
@@ -30,6 +35,13 @@ const Home = () => {
 		window.scrollTo(0, 0)
 	}, [])
 
+	useEffect(() => {
+		const getData = async () => {
+			const productArray = await getAllProducts()
+			dispatch(setProductList(productArray))
+		}
+		getData()
+	}, [])
 	return (
 		<div className="home-container">
 			<section className="home-section" id="landing-page">

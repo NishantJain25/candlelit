@@ -1,17 +1,21 @@
 import "./signup-form.styles.scss"
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { selectCartItems } from "../../store/cart/cart.selector"
+
 import { useNavigate } from "react-router-dom"
 import {
 	createAuthUserWithEmailAndPassword,
 	createUserDocFromAuth,
+	getUserCart,
 } from "../../utils/firebase/firebase.utils"
 import FormInput from "../../components/form-input/form-input.component"
 import Button from "../../components/button/button.component"
-import { CartContext } from "../../contexts/cart.context"
 
 const SignUp = () => {
-	const { cartItems, cartCount, cartAmount } = useContext(CartContext)
+	const cartItems = useSelector(selectCartItems)
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 	const defaultFormFields = {
 		displayName: "",
 		email: "",
@@ -87,12 +91,8 @@ const SignUp = () => {
 		try {
 			const { user } = await createAuthUserWithEmailAndPassword(email, password)
 
-			await createUserDocFromAuth(
-				user,
-				{ cartItems, cartCount, cartAmount },
-				{ displayName }
-			)
-
+			await createUserDocFromAuth(user, cartItems, { displayName })
+			
 			resetForm()
 			navigate(-1)
 		} catch (error) {

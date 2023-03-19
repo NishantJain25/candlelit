@@ -1,17 +1,25 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import CheckoutDetails from "../../components/checkout-details/checkout-details.component"
 import CheckoutProduct from "../../components/checkout-product/checkout-product.component"
 import AddressForm from "../../components/address-form/address-form.component"
 import Button from "../../components/button/button.component"
-import { CartContext } from "../../contexts/cart.context"
-import { UserContext } from "../../contexts/user.context"
+
+import { useSelector } from "react-redux"
+import { selectCurrentUser } from "../../store/user/user.selector"
+import {
+	selectCartItems,
+	selectCartAmount,
+	selectCartCount,
+} from "../../store/cart/cart.selector"
 import { VscAdd, VscChromeMinimize } from "react-icons/vsc"
 import "./checkout.styles.scss"
 
 const Checkout = () => {
 	const [showDetails, setShowDetails] = useState(false)
-	const { cartItems, cartAmount, cartCount } = useContext(CartContext)
-	const { currentUser } = useContext(UserContext)
+	const cartItems = useSelector(selectCartItems)
+	const cartCount = useSelector(selectCartCount)
+	const cartAmount = useSelector(selectCartAmount)
+	const currentUser = useSelector(selectCurrentUser)
 	console.log(currentUser)
 	return (
 		<div className="checkout-contaienr">

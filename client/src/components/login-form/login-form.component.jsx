@@ -1,14 +1,21 @@
 import "./login-form.styles.scss"
 import React, { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import FormInput from "../../components/form-input/form-input.component"
 import Button from "../../components/button/button.component"
 import {
 	signInAuthUserWithEmailAndPassword,
 	forgotPassword,
+	getUserCart,
 } from "../../utils/firebase/firebase.utils"
+import { selectCartItems } from "../../store/cart/cart.selector"
+import { addItemToCart } from "../../store/cart/cart.action"
+
 const Login = () => {
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const cartItems = useSelector(selectCartItems)
 	const defaultFormFields = {
 		email: "",
 		password: "",
@@ -59,6 +66,11 @@ const Login = () => {
 
 		try {
 			const { user } = await signInAuthUserWithEmailAndPassword(email, password)
+			const data = await getUserCart(user.uid)
+
+			data.cartItems.map((cartItem) => {
+				dispatch(addItemToCart(user, cartItems, cartItem, cartItem.quantity))
+			})
 
 			resetForm()
 			navigate(-1)
@@ -95,7 +107,6 @@ const Login = () => {
 			<button id="forgot-password" onClick={forgotPasswordHandler}>
 				Forgot password?
 			</button>
-			
 		</div>
 	)
 }

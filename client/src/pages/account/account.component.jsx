@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate, NavLink, Routes, Route } from "react-router-dom"
-import { UserContext } from "../../contexts/user.context"
+import { useSelector, useDispatch } from "react-redux"
+import { selectCurrentUser } from "../../store/user/user.selector"
+import { clearCart } from "../../store/cart/cart.action"
 import { getUser } from "../../utils/firebase/firebase.utils"
 import { signUserOut } from "../../utils/firebase/firebase.utils"
 import { VscChevronRight } from "react-icons/vsc"
@@ -15,7 +17,8 @@ const Account = () => {
 	const [shouldUpdate, setShouldUpdate] = useState(false)
 	const [user, setUser] = useState({})
 	const [show, setShow] = useState(false)
-	const { currentUser } = useContext(UserContext)
+	const dispatch = useDispatch()
+	const currentUser = useSelector(selectCurrentUser)
 
 	useEffect(() => {
 		setIsLoading(true)
@@ -25,15 +28,16 @@ const Account = () => {
 			setIsLoading(false)
 		}
 		getUserData()
-		console.log("update")
 		setShouldUpdate(false)
 	}, [currentUser, shouldUpdate])
+
 	const navigate = useNavigate()
 	const handleSignOut = () => {
 		signUserOut()
+		dispatch(clearCart())
 		navigate("/auth")
 	}
-	console.log(shouldUpdate)
+
 	return (
 		<div className="account-container">
 			<h1>Hello {user.displayName}</h1>

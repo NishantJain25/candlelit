@@ -1,9 +1,8 @@
-import React, { useContext } from "react"
-import { CartContext } from "../../contexts/cart.context"
+import React from "react"
+
 import "./checkout-details.styles.scss"
 
 const CheckoutDetails = ({ cartAmount, quantity }) => {
-	
 	return (
 		<div className="checkout-details">
 			<div className="checkout-row">

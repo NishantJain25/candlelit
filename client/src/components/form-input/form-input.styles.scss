@@ -60,3 +60,12 @@ $secondary-font: "Raleway", sans-serif;
 		}
 	}
 }
+
+@media screen and (max-width: 768px) {
+	.group {
+		.form-input-label {
+			font-size: 14px;
+			top: 15px;
+		}
+	}
+}

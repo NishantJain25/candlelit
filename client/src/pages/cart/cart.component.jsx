@@ -1,14 +1,21 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
+import { useSelector } from "react-redux"
+import {
+	selectCartItems,
+	selectCartCount,
+	selectCartAmount,
+} from "../../store/cart/cart.selector"
 import { NavLink } from "react-router-dom"
 import Button from "../../components/button/button.component"
 import CartItem from "../../components/cart-item/cart-item.component"
 import CheckoutDetails from "../../components/checkout-details/checkout-details.component"
-import { CartContext } from "../../contexts/cart.context"
+
 import "./cart.styles.scss"
 
 const Cart = () => {
-	const { cartItems, cartCount, cartAmount } = useContext(CartContext)
-
+	const cartItems = useSelector(selectCartItems)
+	const cartCount = useSelector(selectCartCount)
+	const cartAmount = useSelector(selectCartAmount)
 	return (
 		<div className="cart-container">
 			<header className="cart-header">
@@ -16,7 +23,6 @@ const Cart = () => {
 			</header>
 			<div className="cart-table-container">
 				<div className="cart-table">
-					
 					<div className="table-rows">
 						{cartItems.map((cartItem, key) => (
 							<CartItem product={cartItem} key={key} />

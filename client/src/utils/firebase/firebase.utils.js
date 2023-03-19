@@ -101,7 +101,7 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const createUserDocFromAuth = async (
 	userAuth,
-	cartData,
+	cartItems,
 	additionalInfo = {}
 ) => {
 	if (!userAuth) return
@@ -121,7 +121,7 @@ export const createUserDocFromAuth = async (
 				...additionalInfo,
 			})
 
-			await createCart(userAuth.uid, cartData)
+			await createCart(userAuth.uid, cartItems)
 		} catch (error) {
 			console.error("Error creating user: ", error)
 		}
@@ -227,12 +227,12 @@ export const getUserCart = async (userID) => {
 		console.log(err)
 	}
 }
-export const updateUserCart = async (userID, cartData) => {
+export const updateUserCart = async (userID, cartItems) => {
 	if (!userID) return
 
 	try {
 		const docRef = doc(db, "cart", userID)
-		await updateDoc(docRef, cartData)
+		await updateDoc(docRef, { cartItems })
 	} catch (error) {
 		console.log(error)
 	}
