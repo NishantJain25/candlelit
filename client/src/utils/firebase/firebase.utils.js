@@ -204,7 +204,7 @@ export const getProductById = async (id) => {
 	}
 }
 
-export const createCart = async (userID, cartData) => {
+export const createCart = async (userID, cartData = { cartItems: [] }) => {
 	const collectionRef = collection(db, "cart")
 	const docRef = doc(collectionRef, userID)
 
