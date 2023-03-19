@@ -5,6 +5,7 @@ import {
 	selectCartCount,
 	selectCartAmount,
 } from "../../store/cart/cart.selector"
+import { selectCurrentUser } from "../../store/user/user.selector"
 import { NavLink } from "react-router-dom"
 import Button from "../../components/button/button.component"
 import CartItem from "../../components/cart-item/cart-item.component"
@@ -16,6 +17,7 @@ const Cart = () => {
 	const cartItems = useSelector(selectCartItems)
 	const cartCount = useSelector(selectCartCount)
 	const cartAmount = useSelector(selectCartAmount)
+	const currentUser = useSelector(selectCurrentUser)
 	return (
 		<div className="cart-container">
 			<header className="cart-header">
@@ -23,11 +25,18 @@ const Cart = () => {
 			</header>
 			<div className="cart-table-container">
 				<div className="cart-table">
-					<div className="table-rows">
-						{cartItems.map((cartItem, key) => (
-							<CartItem product={cartItem} key={key} />
-						))}
-					</div>
+					{cartItems.length === 0 ? (
+						<div id="empty-cart-message">
+							<h2>Cart is empty!</h2>
+							<p>{!currentUser ? "Login to get saved items" : ""}</p>
+						</div>
+					) : (
+						<div className="table-rows">
+							{cartItems.map((cartItem, key) => (
+								<CartItem product={cartItem} key={key} />
+							))}
+						</div>
+					)}
 				</div>
 				<div className="order-summary">
 					<p id="title">Order Summary</p>

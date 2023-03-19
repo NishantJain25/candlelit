@@ -29,6 +29,14 @@ $secondary-font: "Raleway", sans-serif;
 				text-decoration: none;
 				color: black;
 			}
+
+			#empty-cart-message {
+				font-family: $secondary-font;
+
+				p {
+					color: $secondary-color;
+				}
+			}
 		}
 		.order-summary {
 			flex: 2;
