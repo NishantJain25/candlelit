@@ -79,11 +79,11 @@ const AddressForm = () => {
 				<div className="saved-address">
 					<p>
 						{user.address.house +
-							"," +
+							" " +
 							user.address.address +
-							"," +
+							" " +
 							user.address.city +
-							"," +
+							" " +
 							user.address.state}
 					</p>
 					<Button buttonType="secondary" onClick={useSavedAddress}>

@@ -5,7 +5,7 @@ $secondary-font: "Raleway", sans-serif;
 
 .checkout-grid {
 	display: block;
-	width: 1200px;
+	max-width: 1200px;
 	margin: 0 auto;
 	box-sizing: border-box;
 	font-family: $secondary-font;
@@ -34,8 +34,6 @@ $secondary-font: "Raleway", sans-serif;
 			.fields {
 				text-align: left;
 				font-size: 0.8rem;
-
-				
 			}
 		}
 	}
@@ -55,7 +53,31 @@ $secondary-font: "Raleway", sans-serif;
 		.cart-items {
 			overflow: hidden;
 			margin-top: 20px;
-			
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.checkout-grid {
+		display: flex;
+		flex-direction: column-reverse;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		section {
+			padding: 0;
+			float: unset;
+			width: 100% !important;
+		}
+		.information {
+			.information-container {
+				padding: 2em;
+			}
+		}
+		.order-summary {
+			.order-summary-container {
+				padding: 2em;
+			}
 		}
 	}
 }

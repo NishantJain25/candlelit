@@ -16,6 +16,7 @@ $secondary-font: "Raleway", sans-serif;
 	}
 	.saved-address {
 		display: flex;
+		gap: 20px;
 		text-align: left;
 		align-items: center;
 		justify-content: space-between;
@@ -71,6 +72,23 @@ $secondary-font: "Raleway", sans-serif;
 					@include shrinkLabel();
 				}
 			}
+		}
+	}
+}
+
+
+@media screen and (max-width: 768px) {
+	.address-form-container {
+		.saved-address {
+			flex-direction: column;
+			button {
+				flex: unset;
+				width: 100%;
+			}
+		}
+		.address-form {
+			display: flex;
+			flex-direction: column;
 		}
 	}
 }

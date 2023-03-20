@@ -11,28 +11,37 @@ const Profile = ({ user, setShouldUpdate, setShow }) => {
 	const navigate = useNavigate()
 	const defaultFormErrors = {
 		nameError: "",
-		emailError: "",
 		addressError: "",
+		houseError: "",
+		postalCodeError: "",
+		cityError: "",
+		stateError: "",
+		phoneNumberError: "",
 	}
 	const [editMode, setEditMode] = useState(false)
 
 	const [formFields, setFormFields] = useState({
 		displayName: currentUser.displayName,
-
-		address: currentUser.address
-			? currentUser.address.house +
-			  ", " +
-			  currentUser.address.address +
-			  ", " +
-			  currentUser.address.city +
-			  ", " +
-			  currentUser.address.state
-			: "",
+		address: currentUser.address ? currentUser.address.address : "",
+		house: currentUser.address ? currentUser.address.house : "",
+		postalCode: currentUser.address ? currentUser.address.postalCode : "",
+		city: currentUser.address ? currentUser.address.city : "",
+		state: currentUser.address ? currentUser.address.state : "",
+		phoneNumber: currentUser.phoneNumber ? currentUser.phoneNumber : "",
 	})
 	const [formErrors, setFormErrors] = useState(defaultFormErrors)
 
-	const { displayName, address } = formFields
-	const { nameError, addressError } = formErrors
+	const { displayName, address, house, postalCode, city, state, phoneNumber } =
+		formFields
+	const {
+		nameError,
+		addressError,
+		houseError,
+		postalCodeError,
+		cityError,
+		stateError,
+		phoneNumberError,
+	} = formErrors
 
 	const handleChange = (e) => {
 		setFormFields({ ...formFields, [e.target.name]: e.target.value })
@@ -51,8 +60,20 @@ const Profile = ({ user, setShouldUpdate, setShow }) => {
 			setTimeout(() => setFormErrors({ ...formErrors, addressError: "" }), 3000)
 			return
 		}
+		if (phoneNumber.length < 10) {
+			setFormErrors({
+				...formErrors,
+				phoneNumberError: "Phone number should be 10 characters long",
+			})
+			setTimeout(() => setFormErrors({ ...formErrors, addressError: "" }), 3000)
+			return
+		}
 
-		const userData = { displayName, address }
+		const userData = {
+			displayName,
+			address: { address, house, postalCode, city, state },
+			phoneNumber: phoneNumber,
+		}
 		try {
 			await updateUser(currentUser.userID, userData)
 			setEditMode(false)
@@ -63,7 +84,8 @@ const Profile = ({ user, setShouldUpdate, setShow }) => {
 			console.log(error)
 		}
 	}
-
+	console.log(state)
+	const fullAddress = house + " " + address + " " + city + " " + state
 	return (
 		<div className="profile">
 			<header>
@@ -100,15 +122,53 @@ const Profile = ({ user, setShouldUpdate, setShow }) => {
 				<div className="detail-field">
 					<p className="label">Address</p>
 					<p className="value" style={{ display: `${editMode ? "none" : ""}` }}>
-						{currentUser.address ? address : "No address saved"}
+						{currentUser.address ? fullAddress : "No address saved"}
 					</p>
-					<FormInput
-						name="address"
-						value={address}
-						onChange={handleChange}
+					<div
+						id="address-form"
 						style={{ display: `${editMode ? "" : "none"}` }}
-						error={addressError}
-					/>
+					>
+						<FormInput
+							label="House number"
+							name="house"
+							value={house}
+							onChange={handleChange}
+						/>
+						<FormInput
+							label="Address"
+							name="address"
+							value={address}
+							onChange={handleChange}
+						/>
+						<FormInput
+							label="Postal Code"
+							name="postalCode"
+							value={postalCode}
+							onChange={handleChange}
+						/>
+						<FormInput
+							label="City"
+							name="city"
+							value={city}
+							onChange={handleChange}
+						/>
+						<div className="state-dropdown">
+							<select name="state" value={state} onChange={handleChange}>
+								<option value="none" defaultValue hidden></option>
+								<option value="maharashtra">Maharashtra</option>
+								<option value="gujarat">Gujarat</option>
+								<option value="delhi">Delhi</option>
+								<option value="chennai">Chennai</option>
+							</select>
+							<label
+								className={`${
+									state.length > 0 ? "shrink" : ""
+								} form-input-label`}
+							>
+								Select State
+							</label>
+						</div>
+					</div>
 				</div>
 				<div className="detail-field">
 					<p className="label">Phone Number</p>
@@ -118,11 +178,11 @@ const Profile = ({ user, setShouldUpdate, setShow }) => {
 							: "No number saved"}
 					</p>
 					<FormInput
-						name="address"
-						value={address}
+						name="phoneNumber"
+						value={phoneNumber}
 						onChange={handleChange}
 						style={{ display: `${editMode ? "" : "none"}` }}
-						error={addressError}
+						error={phoneNumberError}
 					/>
 				</div>
 				<div
