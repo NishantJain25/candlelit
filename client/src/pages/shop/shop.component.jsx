@@ -4,23 +4,34 @@ import ProductCard from "../../components/product-card/product-card.component"
 import "./shop.styles.scss"
 import { selectProductList } from "../../store/product/product.selector"
 
-const category_list = ["All", "Bubble", "Cylinder", "Sphere"]
+const category_list = [
+	"All",
+	"Bubble",
+	"Mini Bubble",
+	"Couple",
+	"Pillar",
+	"Shell",
+	"Swirl",
+	"Teddy Bear",
+]
 const Shop = () => {
-	const [category, setCategory] = useState("")
+	const [filteredCategory, setFilteredCategory] = useState("")
 	const [products, setProducts] = useState([])
 	const productList = useSelector(selectProductList)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
-		category !== "All"
+		filteredCategory !== "All"
 			? setProducts(
-					productList.filter((product) => product.category.includes(category))
+					productList.filter((product) =>
+						product.category.includes(filteredCategory)
+					)
 			  )
 			: setProducts(productList)
-	}, [productList, category])
+	}, [productList, filteredCategory])
 
 	const updateCategory = (category) => {
-		setCategory(category)
+		setFilteredCategory(category)
 	}
 
 	return (
@@ -33,8 +44,15 @@ const Shop = () => {
 					<aside className="category-list">
 						<h3>Categories</h3>
 						<div className="category-buttons">
-							{category_list.map((category) => (
-								<button id="category" onClick={() => updateCategory(category)}>
+							{category_list.map((category, key) => (
+								<button
+									id="category"
+									className={
+										category === filteredCategory ? "active-category" : ""
+									}
+									onClick={() => updateCategory(category)}
+									key={key}
+								>
 									{category}
 								</button>
 							))}

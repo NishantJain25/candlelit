@@ -1,26 +1,61 @@
 $primary-color: black;
 $secondary-color: grey;
-$primary-font: 'Cinzel Decorative', cursive;
-$secondary-font: 'Raleway', sans-serif;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
 
-.authentication-container{
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: top;
-    margin:100px auto;
-    gap: 75px;
-    h1{
-        font-family: $primary-font;
-    }
-    .form-container{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        
-        button{
-            width: 100%;
-        }
-    }
+.authentication-container {
+	width: 50vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 100px auto;
+
+	h1 {
+		font-family: $primary-font;
+	}
+	.form-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin: 75px 0 50px 0;
+		button {
+			width: 100%;
+		}
+	}
+
+	.toggle-login-signup {
+		display: none;
+
+		button {
+			margin: 0;
+			width: 100%;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.authentication-container {
+		width: 75vw;
+		margin: 100px 50px;
+
+		.form-container {
+			justify-content: space-between;
+			gap: 100px;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.authentication-container {
+		width: 100vw;
+		padding: 0 2em;
+
+		.form-container {
+			flex-direction: column;
+		}
+
+		.toggle-login-signup {
+			display: block;
+		}
+	}
 }

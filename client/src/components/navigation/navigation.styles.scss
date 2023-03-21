@@ -17,7 +17,7 @@
 		justify-content: flex-start;
 	}
 	.navigation-bar {
-		flex: 2;
+		flex: 3;
 		z-index: 2;
 	}
 	.action-buttons {
@@ -101,6 +101,7 @@
 	}
 }
 
+
 @media only screen and (max-width: 768px) {
 	.navigation {
 		padding: 10px 20px;
@@ -127,3 +128,4 @@
 		display: none;
 	}
 }
+

@@ -12,7 +12,7 @@ import {
 import FormInput from "../../components/form-input/form-input.component"
 import Button from "../../components/button/button.component"
 
-const SignUp = () => {
+const SignUp = ({ hide }) => {
 	const cartItems = useSelector(selectCartItems)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
@@ -92,7 +92,7 @@ const SignUp = () => {
 			const { user } = await createAuthUserWithEmailAndPassword(email, password)
 
 			await createUserDocFromAuth(user, cartItems, { displayName })
-			
+
 			resetForm()
 			navigate(-1)
 		} catch (error) {
@@ -107,7 +107,7 @@ const SignUp = () => {
 	}
 
 	return (
-		<div className="signup-form-container">
+		<div className="signup-form-container" id={hide ? "hidden" : ""}>
 			<h2>Sign Up</h2>
 			<form onSubmit={onSubmit} noValidate>
 				<FormInput

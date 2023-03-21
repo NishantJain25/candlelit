@@ -12,7 +12,7 @@ import {
 import { selectCartItems } from "../../store/cart/cart.selector"
 import { addItemToCart } from "../../store/cart/cart.action"
 
-const Login = () => {
+const Login = ({ hide }) => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const cartItems = useSelector(selectCartItems)
@@ -79,7 +79,7 @@ const Login = () => {
 		}
 	}
 	return (
-		<div className="login-form-container">
+		<div className="login-form-container" id={hide ? "hidden" : ""}>
 			<h2>Login</h2>
 			<form onSubmit={onSubmit}>
 				<FormInput

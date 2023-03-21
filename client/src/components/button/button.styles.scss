@@ -9,21 +9,13 @@ $secondary-font: "Raleway", sans-serif;
 	margin: 20px 0px;
 
 	font-family: $secondary-font;
+
 	&.primary {
 		background-color: black;
 		color: white;
-		&:hover {
-			background-color: transparent;
-			color: black;
-		}
 	}
-
 	&.secondary {
 		background-color: transparent;
-		&:hover {
-			background-color: black;
-			color: white;
-		}
 	}
 }
 //set styles for primary and secondary
@@ -31,5 +23,28 @@ $secondary-font: "Raleway", sans-serif;
 @media screen and (max-width: 768px) {
 	.button-container {
 		font-size: 14px;
+	}
+}
+
+@media (hover: hover) {
+	.primary:hover {
+		background-color: transparent;
+		color: black;
+	}
+
+	.secondary:hover {
+		background-color: black;
+		color: white;
+	}
+}
+
+@media (hover: none) {
+	.primary:active {
+		background-color: transparent;
+		color: black;
+	}
+	.secondary:active {
+		background-color: black;
+		color: white;
 	}
 }

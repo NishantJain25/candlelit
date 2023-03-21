@@ -10,9 +10,23 @@ $secondary-font: "Raleway", sans-serif;
 	font-family: $primary-font;
 }
 #forgot-password {
+	background: none;
+	border: none;
 	text-align: right;
 	text-decoration: underline;
 	font-family: $secondary-font;
-	font-weight: bold;
+
 	cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+	.login-form-container {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#hidden {
+		display: none;
+	}
 }

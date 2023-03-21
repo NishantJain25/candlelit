@@ -1,16 +1,22 @@
 $primary-color: black;
 $secondary-color: grey;
-$primary-font: 'Cinzel Decorative', cursive;
-$secondary-font: 'Raleway', sans-serif;
+$primary-font: "Cinzel Decorative", cursive;
+$secondary-font: "Raleway", sans-serif;
 
-.signup-form-container{
-    width: 20vw;
-    display: flex;
-    flex-direction: column;
-    font-family: $primary-font;
+.signup-form-container {
+	width: 20vw;
+	display: flex;
+	flex-direction: column;
+	font-family: $primary-font;
 }
-.error{
-    font-family: $secondary-font;
-    color: red;
-    text-align: left;
+.error {
+	font-family: $secondary-font;
+	color: red;
+	text-align: left;
+}
+
+@media screen and (max-width: 1024px) {
+	.signup-form-container {
+		width: 100%;
+	}
 }
