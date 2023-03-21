@@ -1,16 +1,16 @@
 .navigation {
 	display: flex;
-	position: sticky;
+	position: fixed;
 	top: 0px;
 	width: 100%;
 	padding: 10px 50px;
-	background-color: white;
 	font-family: "Raleway", sans-serif;
 	font-weight: 400;
 	font-size: 13px;
 	justify-content: space-between;
 	align-items: center;
-	z-index: 2;
+	z-index: 100;
+	transition: all 0.2s ease;
 	.logo {
 		display: flex;
 		flex: 1;
@@ -77,6 +77,11 @@
 		background-color: black;
 	}
 }
+
+.navigation-bg {
+	background-color: white;
+	box-shadow: 0px 0px 10px rgb(230, 230, 230);
+}
 .hamburger-menu {
 	display: none;
 	z-index: 10;
@@ -89,18 +94,18 @@
 	height: 100%;
 	width: 100%;
 	text-align: left;
-	overflow-x: hidden;
 	background-color: white;
-
+	transition: all 0.3s ease-in-out;
+	box-shadow: 0 0 10px rgb(230, 230, 230);
 	display: none;
-	transition: all 0.3s ease;
+
 	.links {
 		display: flex;
 		flex-direction: column;
+
 		padding: 80px 20px;
 	}
 }
-
 
 @media only screen and (max-width: 768px) {
 	.navigation {
@@ -109,10 +114,16 @@
 	.sidenav {
 		display: block;
 		z-index: 5;
+		overflow-x: hidden;
 
 		.links {
 			overflow: hidden;
+			white-space: nowrap;
+
 			a {
+				width: 100%;
+				max-lines: 1;
+				text-overflow: clip;
 				font-size: 20px;
 			}
 		}
@@ -128,4 +139,3 @@
 		display: none;
 	}
 }
-

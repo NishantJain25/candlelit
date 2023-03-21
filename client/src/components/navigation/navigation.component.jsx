@@ -11,8 +11,20 @@ const Navigation = () => {
 	const currentUser = useSelector(selectCurrentUser)
 	const [isSidenavOpen, setIsSidenavOpen] = useState(false)
 
+	// change navbar color when scrolling
+	const [bgColor, setBgColor] = useState(false)
+	const changeBgColor = () => {
+		if (window.scrollY >= 60) {
+			setBgColor(true)
+		} else {
+			setBgColor(false)
+		}
+	}
+
+	window.addEventListener("scroll", changeBgColor)
+
 	return (
-		<div className="navigation">
+		<div className={bgColor ? "navigation navigation-bg" : "navigation"}>
 			<div
 				className="hamburger-menu"
 				onClick={() => setIsSidenavOpen((currentState) => !currentState)}
@@ -21,7 +33,7 @@ const Navigation = () => {
 			</div>
 			<div
 				className="sidenav"
-				style={{ width: `${isSidenavOpen ? "100%" : "0"}` }}
+				style={{ width: `${isSidenavOpen ? "90%" : "0"}` }}
 			>
 				<div className="links">
 					<NavLink

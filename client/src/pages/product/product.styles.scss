@@ -48,7 +48,7 @@ $secondary-font: "Raleway", sans-serif;
 			}
 		}
 		#main-image.opened {
-			position: absolute;
+			position: fixed;
 			top: 0;
 			left: 0;
 			height: 100vh;
@@ -63,6 +63,8 @@ $secondary-font: "Raleway", sans-serif;
 				width: fit-content;
 				animation: imageResize 0.2s ease;
 			}
+
+			
 		}
 
 		@keyframes imageResize {
@@ -237,7 +239,40 @@ $secondary-font: "Raleway", sans-serif;
 		margin: 0px 10px;
 	}
 }
+@media screen and (max-width: 768px) {
+	.container {
+		margin: 0;
+		max-width: 100%;
+		padding: 0 2em;
+	}
+	.product-page-container {
+		gap: 50px;
+		align-items: flex-start;
+		.images-container {
+			justify-content: flex-end;
+			display: flex;
+			flex-direction: column-reverse;
+			height: 100%;
+			width: 100%;
+			#main-image .img {
+				width: 100%;
+			}
+			#image-row {
+				flex-direction: row;
+			}
+		}
 
+		.product-details {
+			justify-content: flex-start;
+			#product-name {
+				font-size: 2rem;
+			}
+			.buttons {
+				width: 100%;
+			}
+		}
+	}
+}
 @media screen and (max-width: 425px) {
 	.container {
 		padding: 0;
@@ -327,6 +362,9 @@ $secondary-font: "Raleway", sans-serif;
 			flex-direction: column;
 			justify-content: space-between;
 			height: 100%;
+			header {
+				padding: 0;
+			}
 			#product-name {
 				font-family: $primary-font;
 				font-size: 24px;
@@ -345,7 +383,7 @@ $secondary-font: "Raleway", sans-serif;
 				width: 100%;
 
 				button {
-					height: 48px;
+					height: 50px;
 				}
 			}
 		}

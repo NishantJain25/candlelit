@@ -48,7 +48,7 @@ const Home = () => {
 				<div
 					className="background-image-1"
 					style={{
-						background: `url(${LandingImage1}) rgba(255,255,255,0.1)`,
+						background: `url(${LandingImage1})`,
 						backgroundPosition: "left",
 						backgroundSize: "cover",
 						backgroundBlendMode: "screen",
