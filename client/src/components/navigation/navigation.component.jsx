@@ -33,7 +33,7 @@ const Navigation = () => {
 			</div>
 			<div
 				className="sidenav"
-				style={{ width: `${isSidenavOpen ? "90%" : "0"}` }}
+				style={{ transform: `translate(${isSidenavOpen ? "0%" : "-100%"})` }}
 			>
 				<div className="links">
 					<NavLink

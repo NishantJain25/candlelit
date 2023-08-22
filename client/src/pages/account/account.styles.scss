@@ -4,11 +4,12 @@ $primary-font: "Cinzel Decorative", cursive;
 $secondary-font: "Raleway", sans-serif;
 .account-container {
 	width: 75%;
-	padding: 50px 100px;
+	padding: 40px 100px;
 	box-sizing: border-box;
 	animation: fade-in 0.3s ease;
 	h1 {
 		font-family: $primary-font;
+		margin-top: 50px;
 	}
 
 	.grid {

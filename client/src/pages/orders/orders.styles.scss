@@ -3,6 +3,7 @@ $secondary-color: grey;
 $primary-font: "Cinzel Decorative", cursive;
 $secondary-font: "Raleway", sans-serif;
 .details {
+	user-select: none;
 	header p {
 		font-size: 20px;
 		font-weight: 700;

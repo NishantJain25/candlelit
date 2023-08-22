@@ -23,8 +23,34 @@ $secondary-font: "Raleway", sans-serif;
   header {
     font-family: $primary-font;
     margin-bottom: 30px;
+
+	h2{
+		margin: 0;
+	}
   }
   #body{
 	font-family: $secondary-font;
   }
+}
+
+@media screen and (max-width: 768px){
+	.about-container{
+		max-width: unset;
+		margin: auto 50px;
+	}
+}
+@media screen and (max-width: 426px){
+	.about-container{
+		margin:0px;
+		height: 100vh;
+		justify-content: center;
+
+		header, .divider{
+			margin-bottom: 20px;
+		}
+
+		#body{
+			font-size: 14px;
+		}
+	}
 }

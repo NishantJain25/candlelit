@@ -95,7 +95,7 @@
 	width: 100%;
 	text-align: left;
 	background-color: white;
-	transition: all 0.3s ease-in-out;
+	transition: all 0.5s cubic-bezier(0, 0, 0, 1.07);
 	box-shadow: 0 0 10px rgb(230, 230, 230);
 	display: none;
 
@@ -110,12 +110,16 @@
 @media only screen and (max-width: 768px) {
 	.navigation {
 		padding: 10px 20px;
+
+		a::after{
+			display: none;
+		}
 	}
 	.sidenav {
 		display: block;
 		z-index: 5;
 		overflow-x: hidden;
-
+		width: 80%;
 		.links {
 			overflow: hidden;
 			white-space: nowrap;
@@ -124,7 +128,7 @@
 				width: 100%;
 				max-lines: 1;
 				text-overflow: clip;
-				font-size: 20px;
+				font-size: 16px;
 			}
 		}
 	}
