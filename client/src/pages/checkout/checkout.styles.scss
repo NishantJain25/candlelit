@@ -6,7 +6,7 @@ $secondary-font: "Raleway", sans-serif;
 .checkout-grid {
 	display: block;
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 100px auto;
 	box-sizing: border-box;
 	font-family: $secondary-font;
 	p {
@@ -47,7 +47,12 @@ $secondary-font: "Raleway", sans-serif;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			margin-top: 40px;
+			margin-top: 20px;
+			padding: 20px 0px;
+			transition: all 0.3s ease;
+			&:hover{
+				border-bottom: 1px solid black;
+			}
 		}
 
 		.cart-items {

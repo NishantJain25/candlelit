@@ -198,28 +198,8 @@ $secondary-font: "Raleway", sans-serif;
 		}
 	}
 }
+
 @media screen and (max-width: 768px) {
-	.home-container {
-		#home-about {
-			padding: 0 2em;
-			width: 100%;
-			gap: 100px;
-			.home-about-images {
-				width: 100%;
-				height: auto;
-			}
-			.home-about-text {
-				width: 80%;
-			}
-		}
-		#home-shop {
-			.home-shop-container {
-				width: 100%;
-			}
-		}
-	}
-}
-@media screen and (max-width: 425px) {
 	header {
 		padding: 0 2em;
 	}
@@ -268,7 +248,7 @@ $secondary-font: "Raleway", sans-serif;
 			padding: 5em 0em;
 			.explore-container {
 				width: 100vw;
-				margin: 50px 0;
+				margin: 50px auto;
 				padding: 0 2em;
 				button {
 					display: none;
@@ -276,7 +256,7 @@ $secondary-font: "Raleway", sans-serif;
 				.category-list {
 					display: grid;
 					grid-template-columns: 1fr 1fr 1fr;
-
+					margin: 0 auto;
 					gap: 10px;
 					overflow-x: hidden;
 					.category-link {

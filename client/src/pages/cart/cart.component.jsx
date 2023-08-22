@@ -44,9 +44,9 @@ const Cart = () => {
 
 					<div className="checkout-buttons">
 						<NavLink to="/shop">Return to shopping</NavLink>
-						<NavLink to="/checkout" id="primary">
+						{cartCount ? <NavLink to="/checkout" id="primary">
 							Proceed to checkout
-						</NavLink>
+						</NavLink> : null}
 					</div>
 					<div className="info">
 						<p>
