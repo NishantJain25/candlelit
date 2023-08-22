@@ -125,8 +125,8 @@ const Home = () => {
 					{productList &&
 						productList
 							.filter((_, index) => index < 5)
-							.map((product, key) => (
-								<ProductCard key={key} product={product} />
+							.map((product, index) => (
+								<ProductCard key={index} product={product} />
 							))}
 					<button id="view-shop-button" onClick={onNavigateHandler}>
 						View Shop

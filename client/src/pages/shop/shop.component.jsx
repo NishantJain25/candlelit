@@ -60,8 +60,8 @@ const Shop = () => {
 					</aside>
 					<section className="shop-items">
 						<div className="shop-items-container">
-							{products.map((product, key) => (
-								<ProductCard key={key} product={product} />
+							{products.map((product) => (
+								<ProductCard key={product.id} product={product} />
 							))}
 						</div>
 					</section>

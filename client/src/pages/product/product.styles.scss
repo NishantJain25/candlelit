@@ -4,6 +4,7 @@ $primary-font: "Cinzel Decorative", cursive;
 $secondary-font: "Raleway", sans-serif;
 
 .product-page-container {
+	height: 100vh;
 	display: grid;
 	padding-top: 5em;
 	grid-template-columns: 1fr 1fr;
@@ -133,7 +134,7 @@ $secondary-font: "Raleway", sans-serif;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		height: 100%;
+		height: 35em;
 		#product-name {
 			font-family: $primary-font;
 			font-size: 60px;

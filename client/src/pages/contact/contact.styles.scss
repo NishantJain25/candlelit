@@ -4,65 +4,80 @@ $primary-font: "Cinzel Decorative", cursive;
 $secondary-font: "Raleway", sans-serif;
 
 .contact-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	flex-grow: 1;
-	margin: 40px 100px 100px 100px;
-	section {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		padding: 100px;
+  flex-grow: 1;
+  box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+  .sections-grid {
+    display: flex;
+	padding: 100px;
+	box-sizing: border-box;
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 75px;
+	flex:1;
+    h1 {
+      width: 100%;
+      text-align: left;
+      font-family: $primary-font;
+    }
+  }
 
-		h1 {
-			width: 100%;
-			text-align: left;
-			font-family: $primary-font;
-		}
-	}
+  .contact-form {
+    background-color: white;
+    box-sizing: border-box;
 
-	.contact-form {
-		background-color: white;
-		box-sizing: border-box;
+    font-family: $primary-font;
 
-		font-family: $primary-font;
-
-		form {
-			width: 100%;
-		}
-		button {
-			width: 100%;
-		}
-	}
+    form {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+    }
+  }
 }
 
 @media screen and (max-width: 1024px) {
-	.contact-container {
-		display: block;
-		section {
-			h1 {
-				text-align: center;
-			}
-		}
+	.contact-container{
+		overflow: unset;
 	}
+  .sections-grid {
+    flex-direction: column;
+    section {
+      h1 {
+        text-align: center;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
-	.contact-container {
-		margin: 0;
-		padding: 50px 2em;
-	}
+  .contact-container{
+
+	  .sections-grid {
+		  padding: 50px 10px 10px 10px;
+		}
+  }
 }
 
 @media screen and (max-width: 425px) {
-	.contact-container {
-		h1,
-		h2 {
-			font-size: 20px;
-		}
-		section {
-			padding: 2em;
-		}
+  .contact-container {
+    h1,
+    h2 {
+      font-size: 20px;
+    }
+	.sections-grid{
+		padding: 50px 10px 10px 10px;
 	}
+    section {
+      padding: 50px;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 .shop-container {
 	min-height: 100vh;
-	padding: 20px;
+	padding: 40px 20px;
 	font-family: "Cinzel Decorative", cursive;
 	width: 100%;
 
@@ -60,7 +60,7 @@
 			padding: 0;
 			.category-buttons {
 				flex-direction: row;
-				gap: 20px;
+				gap: 15px;
 				overflow: scroll;
 				#category {
 					padding: 5px 10px;
@@ -71,6 +71,7 @@
 				.active-category {
 					background: black !important;
 					color: rgb(250, 249, 248);
+					text-decoration: none;
 				}
 			}
 			.category-buttons::-webkit-scrollbar {

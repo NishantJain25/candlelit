@@ -3,7 +3,7 @@ $secondary-color: grey;
 $primary-font: "Cinzel Decorative", cursive;
 $secondary-font: "Raleway", sans-serif;
 .cart-container {
-	margin: 50px auto;
+	padding: 40px 0;
 	width: 75vw;
 	flex-grow: 1;
 	display: flex;
@@ -12,6 +12,9 @@ $secondary-font: "Raleway", sans-serif;
 	position: relative;
 	gap: 50px;
 
+	.cart-header{
+		margin: 50px auto;
+	}
 	h1 {
 		font-family: $primary-font;
 	}

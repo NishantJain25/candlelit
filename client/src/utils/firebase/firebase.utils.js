@@ -45,7 +45,7 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
 const auth = getAuth(app)
-const storage = getStorage(app)
+export const storage = getStorage(app)
 
 export const addCollectionsAndDocuments = async (
 	collectionKey,
@@ -62,7 +62,8 @@ export const addCollectionsAndDocuments = async (
 	console.log("done")
 }
 
-export const addImageToStorage = async (category, productImg, productName) => {
+
+export const addImageToStorage = async (category, productImg, productName, id) => {
 	console.log(category)
 	const categoryRef = ref(storage, `product-images/${category}/${productName}`)
 	const uploadTask = uploadBytesResumable(categoryRef, productImg)
@@ -86,7 +87,7 @@ export const addImageToStorage = async (category, productImg, productName) => {
 			console.log(error.message)
 		},
 		() => {
-			getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+			getDownloadURL(uploadTask.snapshot.ref).then(async (downloadUrl) => {
 				console.log("file available at ", downloadUrl)
 				return downloadUrl
 			})
