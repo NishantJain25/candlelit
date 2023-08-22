@@ -134,7 +134,7 @@ $secondary-font: "Raleway", sans-serif;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		height: 35em;
+		height: fit-content;
 		#product-name {
 			font-family: $primary-font;
 			font-size: 60px;
@@ -159,7 +159,7 @@ $secondary-font: "Raleway", sans-serif;
 			row-gap: 20px;
 		}
 		#label {
-			color: grey;
+			color: rgb(149,149,149);
 			margin: 0;
 		}
 		#value {
@@ -213,6 +213,15 @@ $secondary-font: "Raleway", sans-serif;
 		#add-to-cart-button {
 			flex: 2;
 			width: 40%;
+		}
+
+		
+		#extra-info-heading{
+			color: rgb(149,149,149);
+			font-size: 14px;
+			padding: 0;
+			margin-bottom: 10px;
+			font-weight: 400;
 		}
 	}
 }
