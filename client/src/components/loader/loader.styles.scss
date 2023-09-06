@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fade-in 1s, rotate 1s infinite ;
+    animation: rotate 1s infinite ;
     position: relative;
     top: 50vh;
     left: 50%;
@@ -39,17 +39,4 @@
     100%{
         rotate: 360deg;
     }
-}
-
-@keyframes fade-in {
-	0% {
-		opacity: 0;
-        
-	}
-	50% {
-		opacity: 0.25;
-	}
-	100% {
-		opacity: 1;
-	}
 }
