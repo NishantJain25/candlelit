@@ -1,0 +1,55 @@
+.loader{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fade-in 1s, rotate 1s infinite ;
+    position: relative;
+    top: 50vh;
+    left: 50%;
+    span{
+        height: 10px;
+        width: 10px;
+        border-radius: 100%;
+        background-color: #BD9958;
+        position: absolute;
+    }
+    #span-1{
+        top:0;
+        left:0;
+        background-color: #61A48A;
+    }
+    #span-2{
+        top:0;
+        right: 0;
+    }
+    #span-3{
+        bottom:0;
+        right:0;
+        background-color: #61A48A;
+    }
+    #span-4{
+        bottom:0;
+        left:0;
+    }
+}
+
+@keyframes rotate {
+    100%{
+        rotate: 360deg;
+    }
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+        
+	}
+	50% {
+		opacity: 0.25;
+	}
+	100% {
+		opacity: 1;
+	}
+}

@@ -9,9 +9,20 @@ $secondary-font: "Raleway", sans-serif;
 	flex-direction: column;
 	justify-content: space-between;
 	transition: all 0.5s ease;
+	animation: fall-in 0.5s ease;
 	gap: 10px;
 	font-family: $secondary-font;
-
+	
+	@keyframes fall-in {
+		0% {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 	#product-image {
 		width: 100%;
 		overflow: hidden;

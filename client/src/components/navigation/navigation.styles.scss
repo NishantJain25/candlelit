@@ -10,7 +10,7 @@
 	justify-content: space-between;
 	align-items: center;
 	z-index: 100;
-	transition: all 0.2s ease;
+	transition: all 0.3s ease;
 	.logo {
 		display: flex;
 		flex: 1;
@@ -19,6 +19,7 @@
 	.navigation-bar {
 		flex: 3;
 		z-index: 2;
+		align-items: center;
 	}
 	.action-buttons {
 		display: flex;
@@ -64,6 +65,9 @@
 		width: 100%;
 	}
 
+	#logo::after{
+		content: unset;
+	}
 	.active {
 		font-weight: 600;
 	}

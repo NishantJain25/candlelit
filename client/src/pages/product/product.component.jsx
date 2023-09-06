@@ -13,11 +13,14 @@ import {
   VscChromeClose,
   VscChromeMinimize,
   VscAdd,
+  VscChevronRight,
+  VscChevronLeft
 } from "react-icons/vsc";
 import "./product.styles.scss";
 
 import { getProductById } from "../../utils/firebase/firebase.utils";
 import Button from "../../components/button/button.component";
+import Loader from "../../components/loader/loader.component";
 
 const Product = () => {
   const { productId } = useParams();
@@ -30,6 +33,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  
   /* const IMAGE_LIST = {
 		white:
 			"https://images.unsplash.com/photo-1608181831696-1f21b6e6e5e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -41,13 +45,34 @@ const Product = () => {
 	const COLOR_LIST = ["white", "lavender", "beige"] */
 
   const [productPhoto, setProductPhoto] = useState("");
-  const [showDetails, setShowDetails] = useState(false);
+  //const [showDetails, setShowDetails] = useState(false);
+
+
+  const getWindowDimensions = () => {
+    const {innerWidth: width, innerHeight: height} = window
+    return {
+      width,
+      height
+    }
+  }
+
+  const [windowDimentions, setWindowDimentions] = useState(getWindowDimensions())
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowDimentions(getWindowDimensions())
+    }
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
+  },[])
 
   const handleQuantityChange = (e) => {
     e.target.id === "add"
       ? setQuantity((quantity) => quantity + 1)
       : quantity > 0 && setQuantity((quantity) => quantity - 1);
   };
+
+
 
   useEffect(() => {
     const getProductData = async () => {
@@ -91,13 +116,13 @@ const Product = () => {
   return (
     <div className="container">
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <div className="product-page-container">
           <div className="images-container">
             <div id="image-row">
               <button id="scroll-up" onClick={scrollUp}>
-                <VscChevronUp />
+              {windowDimentions.width > 786 ? <VscChevronUp /> : <VscChevronLeft />}
               </button>
               <div className="row" id="row">
                 {Object.values(images).map((image, key) => (
@@ -112,7 +137,7 @@ const Product = () => {
                 ))}
               </div>
               <button id="scroll-down" onClick={scrollDown}>
-                <VscChevronDown />
+                {windowDimentions.width > 786 ? <VscChevronDown /> : <VscChevronRight />}
               </button>
             </div>
             <div className={`${viewImage ? "opened" : ""}`} id="main-image">

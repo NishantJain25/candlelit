@@ -11,7 +11,15 @@ $secondary-font: "Raleway", sans-serif;
 	justify-content: center;
 	position: relative;
 	gap: 50px;
-
+	animation: fade-in 0.3s ease;
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 	.cart-header{
 		margin: 50px auto;
 	}

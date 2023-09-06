@@ -9,7 +9,16 @@ $secondary-font: "Raleway", sans-serif;
 	flex-direction: column;
 	justify-content: space-between;
 	margin: 100px auto;
+	animation: fade-in 0.3s ease;
 
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 	h1 {
 		font-family: $primary-font;
 	}

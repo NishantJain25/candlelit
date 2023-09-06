@@ -13,44 +13,54 @@ $secondary-font: "Raleway", sans-serif;
   padding: 50px;
   border: 10px solid white;
   background-color: white;
-	text-align: justify;
-  .divider{
-	height: 0.5px;
-	background-color: black;
-	width: 75px;
-	margin-bottom: 30px;
+  text-align: justify;
+  animation: fade-in 0.3s ease;
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .divider {
+    height: 0.5px;
+    background-color: black;
+    width: 75px;
+    margin-bottom: 30px;
   }
   header {
     font-family: $primary-font;
     margin-bottom: 30px;
 
-	h2{
-		margin: 0;
-	}
+    h2 {
+      margin: 0;
+    }
   }
-  #body{
-	font-family: $secondary-font;
+  #body {
+    font-family: $secondary-font;
   }
 }
 
-@media screen and (max-width: 768px){
-	.about-container{
-		max-width: unset;
-		margin: auto 50px;
-	}
+@media screen and (max-width: 768px) {
+  .about-container {
+    max-width: unset;
+    margin: auto 50px;
+  }
 }
-@media screen and (max-width: 426px){
-	.about-container{
-		margin:0px;
-		height: 100vh;
-		justify-content: center;
+@media screen and (max-width: 426px) {
+  .about-container {
+    margin: 0px;
+    height: 100vh;
+    justify-content: center;
 
-		header, .divider{
-			margin-bottom: 20px;
-		}
+    header,
+    .divider {
+      margin-bottom: 20px;
+    }
 
-		#body{
-			font-size: 14px;
-		}
-	}
+    #body {
+      font-size: 14px;
+    }
+  }
 }
