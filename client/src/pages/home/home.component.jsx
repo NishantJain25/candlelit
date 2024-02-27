@@ -11,7 +11,7 @@ import {
 	getAllProducts,
 } from "../../utils/firebase/firebase.utils"
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from "react-icons/rx"
-import LandingImage1 from "../../assets/product-images/bubble-vanilla.jpg"
+import LandingImage1 from "../../assets/product-images/bubble-vanilla.jpeg"
 import LandingImage2 from "../../assets/product-images/couple-lavender.jpg"
 import aboutImage1 from "../../assets/product-images/pillar-lavender.jpg"
 import aboutImage2 from "../../assets/product-images/swirl-lavender.jpg"
@@ -49,7 +49,7 @@ const Home = () => {
 					className="background-image-1"
 					style={{
 						background: `url(${LandingImage1})`,
-						backgroundPosition: "left",
+						backgroundPosition: "top",
 						backgroundSize: "cover",
 						backgroundBlendMode: "screen",
 					}}

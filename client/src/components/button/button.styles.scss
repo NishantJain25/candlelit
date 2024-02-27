@@ -10,6 +10,8 @@ $secondary-font: "Raleway", sans-serif;
 
 	font-family: $secondary-font;
 
+
+
 	&.primary {
 		background-color: black;
 		color: white;
@@ -36,6 +38,7 @@ $secondary-font: "Raleway", sans-serif;
 		background-color: black;
 		color: white;
 	}
+
 }
 
 @media (hover: none) {
@@ -47,4 +50,5 @@ $secondary-font: "Raleway", sans-serif;
 		background-color: black;
 		color: white;
 	}
+
 }
