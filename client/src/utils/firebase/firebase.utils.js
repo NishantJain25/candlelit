@@ -63,15 +63,19 @@ export const addCollectionsAndDocuments = async (
 }
 
 
-export const addImageToStorage = async (category, productImg, productName, id) => {
-	console.log(category)
+export const addImageToStorage = async (category, imagePath, productName, id) => {
+	const productImgRes = await fetch(imagePath);
+    const productImg = await productImgRes.blob();
 	const categoryRef = ref(storage, `product-images/${category}/${productName}`)
-	const uploadTask = uploadBytesResumable(categoryRef, productImg)
+	const metadata = {
+		contentType: 'image/jpeg'
+	  };
+	const uploadTask = uploadBytesResumable(categoryRef, productImg, metadata)
 
 	uploadTask.on(
 		"state_changed",
 		(snapshot) => {
-			const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+			const progress = (parseInt(snapshot.bytesTransferred) / parseInt(snapshot.totalBytes)) * 100
 			console.log("Progress: ", progress)
 
 			switch (snapshot.state) {

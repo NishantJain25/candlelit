@@ -27,6 +27,7 @@ import {
 import { Provider } from "react-redux"
 import { store, persistor } from "./store/store"
 import { PersistGate } from "redux-persist/integration/react"
+import UploadImage from "./pages/upload-image"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -41,7 +42,8 @@ const router = createBrowserRouter(
 			<Route path="/contact" element={<Contact />} />
 			<Route path="/auth" element={<Authentication />} />
 			<Route path="/checkout" element={<Checkout />} />
-			<Route path="/upload" element={<UploadProduct />} />
+			{/* <Route path="/upload" element={<UploadProduct />} /> */}
+			{/* <Route path="/uploadImage" element={<UploadImage />} /> */}
 		</Route>
 	)
 )

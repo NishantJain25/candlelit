@@ -77,7 +77,6 @@ const Product = () => {
   useEffect(() => {
     const getProductData = async () => {
       const response = await getProductById(productId);
-      console.log(response);
       setProductData({ ...response, id: productId });
       setProductPhoto(response.images[0]);
       setIsLoading(false);
@@ -251,3 +250,14 @@ export default Product;
 								)}
 							</div> */
 }
+
+
+
+
+
+
+// Product page
+// https://firebasestorage.googleapis.com/v0/b/candlelit-dc08b.appspot.com/o/product-images%2FCouple%2FCouple.jpg?alt=media&token=691fe548-5d5d-4240-b2ff-f4d7b93c9a77
+
+// Product card
+// https://firebasestorage.googleapis.com/v0/b/candlelit-dc08b.appspot.com/o/product-images%2FCouple%2FCouple?alt=media&token=8619c516-7075-4c99-8d6b-0a80a6e14184

@@ -16,6 +16,7 @@ import LandingImage2 from "../../assets/product-images/couple-lavender.jpg"
 import aboutImage1 from "../../assets/product-images/pillar-lavender.jpg"
 import aboutImage2 from "../../assets/product-images/swirl-lavender.jpg"
 import "./home.styles.scss"
+import Loader from "../../components/loader/loader.component"
 
 const Home = () => {
 	const { categoriesList } = useContext(CategoryContext)
@@ -63,10 +64,10 @@ const Home = () => {
 			<section id="home-about">
 				<div className="home-about-images">
 					<div id="image-1">
-						<img src={aboutImage1} alt="pillar candle" />
+						<img src={aboutImage1} alt="pillar candle" loading="lazy"/>
 					</div>
 					<div id="image-2">
-						<img src={aboutImage2} alt="swirl candle" />
+						<img src={aboutImage2} alt="swirl candle" loading="lazy"/>
 					</div>
 				</div>
 				<div className="home-about-text">
@@ -86,26 +87,22 @@ const Home = () => {
 					</button>
 					<div className="category-list" id="category-list">
 						{categoriesList ? (
-							categoriesList.map((category) => (
+							categoriesList.map((category, i) => (
 								<NavLink
 									to={`/categories/${category.name}`}
 									className="category-link"
+									key={i}
 								>
 									<div
-										className="category-container"
-										style={{
-											background: `url(${category.imageUrl}) rgba(0,0,0,0.2) `,
-											backgroundPosition: "center",
-											backgroundSize: "cover",
-											backgroundBlendMode: "multiply",
-										}}
+										className="category-container" style={{backgroundImage: `url(category.smallImg)`}}
 									>
+										<img className="category-image" src={category.imageUrl} alt={category.name} loading="lazy"/>
 										<h2>{category.name}</h2>
 									</div>
 								</NavLink>
 							))
 						) : (
-							<p>Loading...</p>
+							<Loader />
 						)}
 					</div>
 					<button id="right" onMouseDown={rightScroll}>

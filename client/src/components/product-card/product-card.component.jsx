@@ -15,19 +15,13 @@ const ProductCard = ({ product }) => {
 	const navigate = useNavigate()
 	const onNavigateHandler = () => navigate(`/product/${id}`)
 	useEffect(() => {
-		const pathRef = ref(storage,images[0])
-		getDownloadURL(pathRef).then((url) => {
-			console.log(name ," : ", url)
-			setImage(url)
-		}).catch((error) => {
-			console.log(error)
-		})
+		setImage(images[0])
 	},[])
 	
 	return (
 		<div className="product-card" onClick={onNavigateHandler}>
 			<div id="product-image">
-				 <img id="image" src={image} style={{background:"white"}}/>
+				 <img id="image" src={image} style={{background:"white"}} loading="lazy"/>
 			</div>
 			<div id="product-details">
 				<div id="details">
